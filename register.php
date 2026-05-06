@@ -57,7 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="login-card">
 
     <div class="brand">
-        <div class="brand-icon">&#9963;</div>
         <div>
             <div class="brand-name">MiamWeek</div>
             <div class="brand-tagline">Plan de repas</div>

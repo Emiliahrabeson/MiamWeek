@@ -4,27 +4,29 @@
     $error = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = trim($_POST["email"]);
-        $password = $_POST["password"];
+    $email = trim($_POST["email"]);
+    $password = $_POST["password"];
 
-        if (!empty($username) && !empty($password)) {
-            $sql = "SELECT * FROM users WHERE email = :email";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute(["email" => $email]);
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!empty($email) && !empty($password)) {
 
-            if ($user && password_verify($password, $user["password_hash"])) {
-                $_SESSION["user_id"] = $user["user_id"];
-                $_SESSION["email"] = $user["email"];
-                header("Location: index.php");
-                exit();
-            } else {
-                $error = "Nom d'utilisateur ou mot de passe incorrect.";
-            }
+        $sql = "SELECT * FROM Users WHERE email = :email";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(["email" => $email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && $password === $user["password"]) {
+            $_SESSION["user_id"] = $user["id_user"];
+            $_SESSION["email"] = $user["email"];
+            header("Location: index.php");
+            exit();
         } else {
-            $error = "Veuillez remplir tous les champs.";
+            $error = "Email ou mot de passe incorrect.";
         }
+
+    } else {
+        $error = "Veuillez remplir tous les champs.";
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,7 +40,6 @@
 <div class="login-card">
 
     <div class="brand">
-        <div class="brand-icon">&#9963;</div>
         <div>
             <div class="brand-name">MiamWeek</div>
             <div class="brand-tagline">Plan de repas</div>

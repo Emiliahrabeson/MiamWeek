@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 placeholder="••••••••">
         </div>
 
-        <button type="submit" class="btn-submit">S'inscrire &rarr;</button>
+        <button type="submit" class="btn-submit">S'inscrire ;</button>
     </form>
 
     <div class="register-link">

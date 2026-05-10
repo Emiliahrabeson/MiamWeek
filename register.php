@@ -4,17 +4,18 @@ require 'db.php';
 $error = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST["name"]);
+    $prenom = trim($_POST["prenom"]);
     $email = trim($_POST["email"]);
     $password = $_POST["password"];
     $confirm = $_POST["confirm_password"];
 
-    if (!empty($name) && !empty($email) && !empty($password) && !empty($confirm)) {
+    if (!empty($name) && !empty($name) && !empty($email) && !empty($password) && !empty($confirm)) {
 
         if ($password !== $confirm) {
             $error = "Les mots de passe ne correspondent pas.";
         } else {
 
-            $check = $pdo->prepare("SELECT id FROM users WHERE email = :email");
+            $check = $pdo->prepare("SELECT id_user FROM Users WHERE email = :email");
             $check->execute(["email" => $email]);
 
             if ($check->fetch()) {
@@ -23,11 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
+                $sql = "INSERT INTO Users (nom,prenom, email, password) VALUES (:name, :prenom, :email, :password)";
                 $stmt = $pdo->prepare($sql);
 
                 $stmt->execute([
                     "name" => $name,
+                    "prenom" => $prenom,
                     "email" => $email,
                     "password" => $hashedPassword
                 ]);
@@ -87,6 +89,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" id="name" name="name"
                 placeholder="votre nom"
                 value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
+        </div>
+
+        <div class="field">
+            <label for="name">Prénom</label>
+            <input type="text" id="prenom" name="prenom"
+                placeholder="votre prénom"
+                value="<?= htmlspecialchars($_POST['prenom'] ?? '') ?>">
         </div>
         <div class="field">
             <label for="email">Nom d'utilisateur</label>

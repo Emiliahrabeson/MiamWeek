@@ -1,0 +1,129 @@
+@font-face {
+  font-family: "Dancing Script";
+  src: url("./assets/fonts/DancingScript-Regular.ttf");
+}
+
+@font-face {
+  font-family: Playfair Display;
+  src: url("./assets/fonts/PlayfairDisplay-Medium.ttf");
+}
+
+@font-face {
+  font-family: clicker script;
+  src: url("./assets/fonts/ClickerScript-Regular.ttf");
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: url("./assets/indexBack.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 60px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.titre {
+  font-family: "Dancing Script", cursive;
+  font-size: 45px;
+  margin: 0;
+  color: #fff;
+}
+.link {
+  padding-right: 300px;
+}
+
+.link ul {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.link li {
+  font-size: 20px;
+  font-family: Playfair Display;
+}
+
+.connex {
+  color: #000000;
+  font-size: 20px;
+  font-family: Playfair Display;
+}
+.connex ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+.link li,
+.connex li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.connex a {
+  color: #1e1e1e;
+  font-weight: bold;
+}
+.up {
+  background-color: #dbaf2c;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #1e1e1e;
+  cursor: pointer;
+}
+
+.content {
+  padding-left: 173px;
+  padding-right: 183px;
+  padding-top: 150px;
+  width: 527px;
+  height: 490px;
+  /* letter-spacing: 20px; */
+}
+
+.text-one {
+  font-family: Playfair Display;
+  font-size: 22px;
+  color: #fff;
+  padding-bottom: 0;
+}
+
+.Grand-titre {
+  font-family: clicker Script;
+  padding-top: 0;
+  padding-left: 60px;
+  padding-right: 212px;
+  color: #fff;
+  font-size: 150px;
+}
+
+.lorem {
+  color: #fff;
+  font-family: Playfair Display;
+  font-size: 18px;
+  line-height: 34px;
+}
+
+.content-button {
+  background-color: #dbaf2c;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #1e1e1e;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}

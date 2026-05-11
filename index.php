@@ -2,10 +2,9 @@
 <?php
 session_start();
 require 'db.php';
-
-
 $id_user = $_SESSION["user_id"];
 $nom_user = $_SESSION["email"];
+
 
 $lundi    = date('Y-m-d', strtotime('monday this week'));
 $dimanche = date('Y-m-d', strtotime('sunday this week'));
@@ -107,7 +106,7 @@ $types_repas = ['Petit-déjeuner','Déjeuner','Dîner'];
   <div class="link">
       <ul>
           <li><a href="index.php">Home</a></li>
-          <li><a href="Recette.php">Recettes</a></li>
+          <li><a href="recette.php">Recettes</a></li>
           <li><a href="Ingredient.php">Ingredient</a></li>
           <li><a href="dashboard.php">Dashboard</a></li>
       </ul>

@@ -2,13 +2,14 @@
 require 'db.php';
 session_start();
 
+$nom_user = $_SESSION["email"];
+
 $id_repas = (int)($_GET['id_repas'] ?? 0);
 if (!$id_repas) {
      header('Location: index.php');
     exit;
  }
 
-// Info du repas
 $repas = $pdo->prepare(
     "SELECT r.*, j.nom_jour, j.date_jour
      FROM Repas r JOIN Jour j ON r.id_jour = j.id_jour
@@ -17,7 +18,7 @@ $repas = $pdo->prepare(
 $repas->execute([$id_repas]);
 $repas = $repas->fetch();
 
-// Recettes déjà liées
+
 $recettes_liees = $pdo->prepare(
     "SELECT rec.* FROM Recette rec
      JOIN Repas_Recette rr ON rec.id_recette = rr.id_recette
@@ -26,7 +27,6 @@ $recettes_liees = $pdo->prepare(
 $recettes_liees->execute([$id_repas]);
 $recettes_liees = $recettes_liees->fetchAll();
 
-// Toutes les recettes disponibles
 $toutes = $pdo->query("SELECT id_recette, nom_recette, calories_total FROM Recette ORDER BY nom_recette")->fetchAll();
 
 
@@ -58,8 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: modifier_repas.php?id_repas=$id_repas");
     exit;
 }
-$nom_user = $_SESSION["email"];
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

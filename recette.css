@@ -93,7 +93,9 @@ a {
   gap: 8px;
   margin-bottom: 22px;
 }
-.search-bar input {
+
+.search-input {
+  width: 900px;
   flex: 1;
   border: 1px solid var(--border);
   border-radius: 5px;
@@ -104,8 +106,12 @@ a {
   outline: none;
   transition: border-color 0.15s;
 }
-.search-bar input:focus {
-  border-color: var(--brand);
+.submit {
+  padding: 10px 4px 10px 4px;
+  background-color: #dbaf2c;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
 .panel {

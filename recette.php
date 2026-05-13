@@ -9,6 +9,19 @@ $suggestions = $pdo->query(
     "SELECT id_recette, nom_recette, categories, calories_total, image_url FROM Recette ORDER BY RAND() LIMIT 10"
 )->fetchAll(PDO::FETCH_ASSOC);
 
+$res = [];
+if (isset($_POST['search'])) {
+  $search = trim($_POST['search']);
+
+  if (!empty($search)) {
+    $sql = "SELECT * FROM Recette WHERE nom_recette LIKE :search";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['search' => "%".$search."%"]);
+
+    $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  }
+}
 $stmt = $pdo->prepare("SELECT * FROM Recette");
 $stmt->execute();
 $recettes = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -45,9 +58,17 @@ $recettes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="wrap">
 
 <div class="panel">
+    <div class="search-bar">
+    <form method="POST" action="">
+        <input type="text" class="search-input" name="search" placeholder="Rechercher des recettes">
+        <input type="submit" value="rechercher" class="submit">
+    </form>
+  </div>
+  
     <div class="panel-titre">Suggestions du moment</div>
     <div class="sug-grid">
-      <?php foreach ($suggestions as $s): ?>
+      <?php $data = empty($res) ? $suggestions : $res;
+      foreach ($data as $s): ?>
       <div class="sug-card" title="<?= htmlspecialchars($s['nom_recette']) ?>">
         <img src="<?= htmlspecialchars($s['image_url']) ?>"
              alt="<?= htmlspecialchars($s['nom_recette']) ?>"
@@ -61,39 +82,8 @@ $recettes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 
-  <div class="panel">
-    <div class="panel-titre">Tous les recettes :</div>
 
-    <?php if (empty($recettes)): ?>
-      <div class="vide">Aucune recette trouvee</div>
-    <?php else: ?>
-    <table>
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Categorie</th>
-          <th>Preparation</th>
-          <th>Calories</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($recettes as $r): ?>
-        <tr>
-          <td>
-            <strong><?= htmlspecialchars($r['nom_recette']) ?></strong><br>
-            <span>
-              <?= htmlspecialchars($r['description'])?>
-            </span>
-          </td>
-          <td><span class="tag"><?= htmlspecialchars($r['categories']) ?></span></td>
-          <td><?= $r['temps_preparation'] ?> min</td>
-          <td class="kcal"><?= (int)$r['calories_total'] ?> kcal</td>
-        </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
-    <?php endif; ?>
-  </div>
+
 
 </div>
 </body>

@@ -2,6 +2,11 @@
 require 'db.php';
 session_start();
 
+if (!isset($_SESSION['id_user'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $id_user = $_SESSION['id_user'];
 $nom_user = $_SESSION["email"];
 
@@ -25,6 +30,46 @@ if (isset($_POST['search'])) {
 $stmt = $pdo->prepare("SELECT * FROM Recette");
 $stmt->execute();
 $recettes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_GET['favori'])) {
+  if (isset($_GET['favori'])) {
+    if (!isset($_SESSION['id_user'])) {
+        header("Location: login.php");
+        exit();
+    }
+    $id_recette = $_GET['favori'];
+
+    // si déjà en favoris
+    $check = $pdo->prepare("
+        SELECT *
+        FROM Favoris
+        WHERE id_user = :id_user
+        AND id_recette = :id_recette
+    ");
+    $check->execute([
+        'id_user' => $id_user,
+        'id_recette' => $id_recette
+    ]);
+
+    $exist = $check->fetch();
+    // ajouter si pas déjà présent
+    if (!$exist) {
+
+        $insert = $pdo->prepare("
+            INSERT INTO Favoris(id_user, id_recette)
+            VALUES(:id_user, :id_recette)
+        ");
+
+        $insert->execute([
+            'id_user' => $id_user,
+            'id_recette' => $id_recette
+        ]);
+    }
+
+    header("Location: recette.php");
+    exit();
+  }
+}
 ?>
 
 
@@ -49,9 +94,9 @@ $recettes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </ul>
   </div>
   <div class="avatar">
-    <ul>
-      <li class="up"><a href="profile.php"><?= $nom_user ?></a></li>
-    </ul>
+      <ul>
+          <li class="up"><a href="profile.php"><?=$nom_user?></a></li>
+      </ul>
   </div>
 </div>
 
@@ -69,21 +114,22 @@ $recettes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="sug-grid">
       <?php $data = empty($res) ? $suggestions : $res;
       foreach ($data as $s): ?>
-      <div class="sug-card" title="<?= htmlspecialchars($s['nom_recette']) ?>">
+      <div class="sug-card">
         <img src="<?= htmlspecialchars($s['image_url']) ?>"
              alt="<?= htmlspecialchars($s['nom_recette']) ?>"
         >
         <div class="sug-card-body">
           <h4><?= htmlspecialchars($s['nom_recette']) ?></h4>
           <p><?= htmlspecialchars($s['categories']) ?> : <span class="kcal"><?= (int)$s['calories_total'] ?> kcal</span></p>
+           <a class="fav-btn"
+            href="recette.php?favori=<?= $s['id_recette'] ?>">
+              Ajouter aux favoris
+          </a>
         </div>
       </div>
       <?php endforeach; ?>
     </div>
   </div>
-
-
-
 
 </div>
 </body>

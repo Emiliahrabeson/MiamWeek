@@ -213,3 +213,19 @@ tr:last-child td {
   font-weight: 600;
   font-size: 12px;
 }
+.fav-btn {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+  background: #b8622a;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.fav-btn:hover {
+  background: #8f4a1e;
+}

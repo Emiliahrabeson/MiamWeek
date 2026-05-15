@@ -2,7 +2,7 @@
 <?php
 session_start();
 require 'db.php';
-$id_user = $_SESSION["user_id"];
+$id_user = $_SESSION["id_user"];
 $nom_user = $_SESSION["email"];
 
 

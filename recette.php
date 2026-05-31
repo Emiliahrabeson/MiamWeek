@@ -11,7 +11,7 @@ $id_user = $_SESSION['id_user'];
 $nom_user = $_SESSION["email"];
 
 $suggestions = $pdo->query(
-    "SELECT id_recette, nom_recette, categories, calories_total, image_url FROM Recette ORDER BY RAND() LIMIT 10"
+    "SELECT id_recette, nom_recette, categories, calories_par_centG, image_url FROM Recette ORDER BY RAND() LIMIT 10"
 )->fetchAll(PDO::FETCH_ASSOC);
 
 $res = [];
@@ -79,7 +79,7 @@ if (isset($_GET['favori'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recettes</title>
-  <link rel="stylesheet" href="recette.css">
+  <link rel="stylesheet" href="./style/recette.css">
 </head>
 <body>
 

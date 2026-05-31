@@ -52,7 +52,7 @@ $stmt = $pdo->prepare("
         r.type_repas,
         rec.id_recette,
         rec.nom_recette,
-        rec.calories_total
+        rec.calories_par_centG
     FROM Jour j
     JOIN Repas r ON j.id_jour = r.id_jour
     LEFT JOIN Repas_Recette rr ON r.id_repas = rr.id_repas
@@ -97,7 +97,7 @@ $types_repas = ['Petit-déjeuner','Déjeuner','Dîner'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiamWeek</title>
-    <link rel="stylesheet" href="index.css">   
+    <link rel="stylesheet" href="./style/index.css">   
 </head>
 <body>
 <div class="navbar">

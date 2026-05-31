@@ -8,7 +8,7 @@
 
 body {
   font-family: Georgia, serif;
-  background-image: url("./assets/farany.jpg");
+  background-image: url("./../assets/farany.jpg");
   min-height: 100vh;
   display: flex;
   align-items: center;

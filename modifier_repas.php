@@ -66,8 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <title>Modifier  <?= htmlspecialchars($repas['type_repas']) ?></title>
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="modifier_repas.css">   
+  <link rel="stylesheet" href="./style/index.css">
+  <link rel="stylesheet" href="./style/modifier_repas.css">   
 </head>
 <body>
 

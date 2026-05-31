@@ -1,22 +1,22 @@
 @font-face {
   font-family: "Dancing Script";
-  src: url("./assets/fonts/DancingScript-Regular.ttf");
+  src: url("./../assets/fonts/DancingScript-Regular.ttf");
 }
 
 @font-face {
   font-family: Playfair Display;
-  src: url("./assets/fonts/PlayfairDisplay-Medium.ttf");
+  src: url("./../assets/fonts/PlayfairDisplay-Medium.ttf");
 }
 
 @font-face {
   font-family: clicker script;
-  src: url("./assets/fonts/ClickerScript-Regular.ttf");
+  src: url("./../assets/fonts/ClickerScript-Regular.ttf");
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: url("./assets/indexBack.jpg") no-repeat center center;
+  background: url("./../assets/indexBack.jpg") no-repeat center center;
   background-size: cover;
   display: flex;
   flex-direction: column;

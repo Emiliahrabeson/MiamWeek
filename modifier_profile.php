@@ -83,7 +83,7 @@ $favoris = $stmtFav->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modification</title>
-    <link rel="stylesheet" href="modifier_profile.css">
+    <link rel="stylesheet" href="./style/modifier_profile.css">
 </head>
 <body>
     <div class="modif">

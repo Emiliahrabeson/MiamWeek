@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
   background:
     linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-    url("./assets/background2.webp") center/cover fixed;
+    url("./../assets/background2.webp") center/cover fixed;
 
   font-family: "DM Sans", sans-serif;
   display: flex;

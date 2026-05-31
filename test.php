@@ -2,7 +2,6 @@
 $search = "viande";
 $url = "https://world.openfoodfacts.org/cgi/search.pl?search_terms=" . urlencode($search) . "&json=1&page_size=5";
 
-// User-Agent obligatoire sinon OpenFoodFacts bloque avec 503
 $context = stream_context_create([
     'http' => [
         'timeout' => 10,

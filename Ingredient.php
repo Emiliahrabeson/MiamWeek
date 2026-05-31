@@ -42,7 +42,7 @@ if (isset($_POST['search'])) {
                 $check = $pdo->prepare("SELECT id_ingredient FROM Ingredient WHERE nom = :nom");
                 $check->execute(['nom' => $nom]);
                 $exists = $check->fetchColumn();
-            if ($exists) continue;
+                if ($exists) continue;
 
                 $calories  = round($p['nutriments']['energy-kcal_100g'] ?? 0);
                 $categorie = trim(str_replace(['en:', 'fr:'], '', $p['categories_tags'][0] ?? 'autre'));

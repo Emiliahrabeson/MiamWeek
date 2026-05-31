@@ -28,36 +28,42 @@ if (isset($_POST['search'])) {
         ]);
 
         $raw  = file_get_contents($url, false, $context);
-        $data = json_decode($raw, true);
-
-        if (!empty($data['products'])) {
-            foreach ($data['products'] as $p) {
-
-                $nom = trim($p['product_name_fr'] ?? $p['product_name'] ?? '');
-                $nom = ucfirst(strtolower($nom));
-
-                if (empty($nom)) continue;
-
-                // Ignorer si déjà en BDD
-                $check = $pdo->prepare("SELECT id_ingredient FROM Ingredient WHERE nom = :nom");
-                $check->execute(['nom' => $nom]);
-                $exists = $check->fetchColumn();
-                if ($exists) continue;
-
-                $calories  = round($p['nutriments']['energy-kcal_100g'] ?? 0);
-                $categorie = trim(str_replace(['en:', 'fr:'], '', $p['categories_tags'][0] ?? 'autre'));
-
-                $pdo->prepare("INSERT INTO Ingredient (nom, unite_par_def, calories_par_centG, categories)
-                               VALUES (:nom, 'g', :calories, :categories)")
-                    ->execute(['nom' => $nom, 'calories' => $calories, 'categories' => $categorie]);
-
-                break;
-            }
-
-            $stmt = $pdo->prepare("SELECT * FROM Ingredient WHERE nom LIKE :search");
-            $stmt->execute(['search' => "%$search%"]);
-            $ingredients = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($raw === false) {
+            $erreur_api = "Service OpenFoodFacts indisponible, réessayez dans quelques instants.";
         }
+        else {
+          $data = json_decode($raw, true);
+
+          if (!empty($data['products'])) {
+              foreach ($data['products'] as $p) {
+
+                  $nom = trim($p['product_name_fr'] ?? $p['product_name'] ?? '');
+                  $nom = ucfirst(strtolower($nom));
+
+                  if (empty($nom)) continue;
+
+                  // Ignorer si déjà en BDD
+                  $check = $pdo->prepare("SELECT id_ingredient FROM Ingredient WHERE nom = :nom");
+                  $check->execute(['nom' => $nom]);
+                  $exists = $check->fetchColumn();
+                  if ($exists) continue;
+
+                  $calories  = round($p['nutriments']['energy-kcal_100g'] ?? 0);
+                  $categorie = trim(str_replace(['en:', 'fr:'], '', $p['categories_tags'][0] ?? 'autre'));
+
+                  $pdo->prepare("INSERT INTO Ingredient (nom, unite_par_def, calories_par_centG, categories)
+                                VALUES (:nom, 'g', :calories, :categories)")
+                      ->execute(['nom' => $nom, 'calories' => $calories, 'categories' => $categorie]);
+
+                  break;
+              }
+
+              $stmt = $pdo->prepare("SELECT * FROM Ingredient WHERE nom LIKE :search");
+              $stmt->execute(['search' => "%$search%"]);
+              $ingredients = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          }
+        }
+       
     }
 
 } else {
@@ -105,10 +111,11 @@ if (isset($_POST['search'])) {
       </form>
     </div>
 
-    <div class="sug-grid">
-      <?php if (!empty($ingredients)): ?>
+    <?php if (!empty($erreur_api)): ?>
+    <p class="erreur"><?= $erreur_api ?></p>
+    <?php elseif (!empty($ingredients)): ?>
         <?php foreach ($ingredients as $s): ?>
-          <div class="sug-card">
+             <div class="sug-card">
             <div class="sug-card-body">
               <h4><?= htmlspecialchars($s['nom']) ?></h4>
               <p>
@@ -120,9 +127,10 @@ if (isset($_POST['search'])) {
             </div>
           </div>
         <?php endforeach; ?>
-      <?php else: ?>
+    <?php else: ?>
         <p>Aucun ingrédient trouvé.</p>
-      <?php endif; ?>
+    <?php endif; ?>
+
     </div>
 
   </div>

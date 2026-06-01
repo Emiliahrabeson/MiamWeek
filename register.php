@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'db.php';
+
 $error = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = trim($_POST["name"]);
@@ -12,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($name) && !empty($name) && !empty($email) && !empty($password) && !empty($confirm)) {
 
         if ($password !== $confirm) {
-            $error = "Les mots de passe ne correspondent pas.";
+            $error = "mot de passe incorrect";
         } else {
 
             $check = $pdo->prepare("SELECT id_user FROM Users WHERE email = :email");

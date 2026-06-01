@@ -310,3 +310,10 @@ h1 {
     font-size: 14px;
   }
 }
+
+.calories {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}

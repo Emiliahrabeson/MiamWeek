@@ -27,7 +27,7 @@ $recettes_liees = $pdo->prepare(
 $recettes_liees->execute([$id_repas]);
 $recettes_liees = $recettes_liees->fetchAll();
 
-$toutes = $pdo->query("SELECT id_recette, nom_recette, calories_total FROM Recette ORDER BY nom_recette")->fetchAll();
+$toutes = $pdo->query("SELECT id_recette, nom_recette, calories_par_centG FROM Recette ORDER BY nom_recette")->fetchAll();
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // maj calories du repas
         $pdo->prepare(
             "UPDATE Repas SET calories = (
-                SELECT COALESCE(SUM(rec.calories_total),0)
+                SELECT COALESCE(SUM(rec.calories_par_centG),0)
                 FROM Repas_Recette rr JOIN Recette rec ON rr.id_recette = rec.id_recette
                 WHERE rr.id_repas = ?
              ) WHERE id_repas = ?"

@@ -2,6 +2,7 @@
 <?php
 session_start();
 require 'db.php';
+
 $id_user = $_SESSION["id_user"];
 $nom_user = $_SESSION["email"];
 
@@ -63,24 +64,34 @@ $stmt = $pdo->prepare("
 $stmt->execute([$id_plan]);
 
 $planData = [];
+$sum = 0;
+
+if (!isset($planData[$jour][$type]['total_calories'])) {
+  $planData[$jour][$type]['total_calories'] = 0;
+}
+
 foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
     $jour = $row['nom_jour'];
     $type = $row['type_repas'];
 
     if (!isset($planData[$jour][$type])) {
         $planData[$jour][$type] = [
-            'id_repas' => $row['id_repas'],
-            'recettes' => []
+            'id_repas'       => $row['id_repas'],
+            'recettes'       => [],
+            'total_calories' => 0,  
         ];
     }
+
     if ($row['id_recette']) {
         $planData[$jour][$type]['recettes'][] = [
             'id'       => $row['id_recette'],
             'nom'      => $row['nom_recette'],
-            'calories' => $row['calories_total']
+            'calories' => $row['calories_par_centG'],
         ];
+        $planData[$jour][$type]['total_calories'] += $row['calories_par_centG'];
     }
 }
+
 
 $nb_recettes    = $pdo->query("SELECT COUNT(*) FROM Recette")->fetchColumn();
 $nb_ingredients = $pdo->query("SELECT COUNT(*) FROM Ingredient")->fetchColumn();
@@ -166,8 +177,10 @@ $types_repas = ['Petit-déjeuner','Déjeuner','Dîner'];
           <?php endforeach; ?>
         </tr>
       </thead>
+
       <tbody>
         <?php foreach ($types_repas as $type): ?>
+
         <tr>
           <td class="label-repas">
             <span class="repas-nom"><?= $type ?></span>
@@ -196,6 +209,28 @@ $types_repas = ['Petit-déjeuner','Déjeuner','Dîner'];
           <?php endforeach; ?>
         </tr>
         <?php endforeach; ?>
+
+        <tr>
+          <td class="label-repas">
+              <span class="repas-nom">Calories</span>
+          </td>
+          <?php foreach ($jours_ordre as $jour): ?>
+              <?php
+              $totalJour = 0;
+
+              foreach ($types_repas as $type) {
+                  $totalJour += $planData[$jour][$type]['total_calories'] ?? 0;
+              }
+              ?>
+
+              <td class="calories">
+                  <?= $totalJour ?> kcal
+              </td>
+
+          <?php endforeach; ?>
+
+      </tr>
+        
       </tbody>
     </table>
   </div>

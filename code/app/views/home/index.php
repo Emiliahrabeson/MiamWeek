@@ -94,11 +94,11 @@
                     <span class="cal-badge"><?= $rec['calories'] ?> kcal</span>
                   <?php endif; ?>
                 <?php endforeach; ?>
-                <a href="modifier_repas.php?id_repas=<?= $id_rep ?>"
+                <a href="index.php?page=modifier_repas&id_repas=<?= $id_rep ?>"
                    class="btn-modifier"> Modifier</a>
               <?php else: ?>
                 <span class="vide-icon">+</span>
-                <a href="modifier_repas.php?id_repas=<?= $id_rep ?>"
+                <a href="index.php?page=modifier_repas&id_repas=<?= $id_rep ?>"
                    class="btn-ajouter">Ajouter</a>
               <?php endif; ?>
             </td>

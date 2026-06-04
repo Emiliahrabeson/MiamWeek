@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../controllers/UserController.php';
+require_once __DIR__ . '/../controllers/HomeController.php';
 
 class Router {
     public static function route () {
@@ -14,6 +15,11 @@ class Router {
             case 'register':
                 $controller = new UserController();
                 $controller->register();
+                break;
+
+            case 'home':
+                $controller = new HomeController();
+                $controller->index();
                 break;
 
             default:

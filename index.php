@@ -43,7 +43,7 @@ if (!$plan) {
 } else {
     $id_plan = $plan['id_plan'];
 }
-
+ 
 $stmt = $pdo->prepare("
     SELECT
         j.id_jour,

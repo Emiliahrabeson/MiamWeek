@@ -14,7 +14,7 @@ class HomeController {
             header("Location: index.php?page=login");
             exit();
         }
-
+ 
         $id_user = $_SESSION["id_user"];
         $nom_user = $_SESSION["email"];
 

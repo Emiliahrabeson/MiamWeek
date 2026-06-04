@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../controllers/UserController.php';
 require_once __DIR__ . '/../controllers/HomeController.php';
+require_once __DIR__ . '/../controllers/RecetteController.php';
+require_once __DIR__ . '/../controllers/IngredientController.php';
 
 class Router {
     public static function route () {
@@ -20,6 +22,16 @@ class Router {
             case 'home':
                 $controller = new HomeController();
                 $controller->index();
+                break;
+            
+            case 'recette':
+                $controller = new RecetteController();
+                $controller->recette();
+                break;
+            
+            case 'ingredient':
+                $controller = new IngredientController();
+                $controller->ingredient();
                 break;
 
             default:

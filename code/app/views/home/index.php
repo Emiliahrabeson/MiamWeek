@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,15 +12,15 @@
 
   <div class="link">
       <ul>
-          <li><a href="index.php">Home</a></li>
-          <li><a href="recette.php">Recettes</a></li>
-          <li><a href="Ingredient.php">Ingredient</a></li>
-          <li><a href="dashboard.php">Dashboard</a></li>
+          <li><a href="index.php?page=home">Home</a></li>
+          <li><a href="index.php?page=recette">Recettes</a></li>
+          <li><a href="index.php?page=ingredient">Ingredient</a></li>
+          <li><a href="index.php?page=dashboard">Dashboard</a></li>
       </ul>
   </div>
   <div class="avatar">
       <ul>
-          <li class="up"><a href="profile.php"><?=$nom_user?></a></li>
+          <li class="up"><a href="index.php?page=profile"><?=$nom_user?></a></li>
       </ul>
   </div>
 

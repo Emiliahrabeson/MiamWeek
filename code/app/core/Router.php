@@ -6,6 +6,8 @@ require_once __DIR__ . '/../controllers/IngredientController.php';
 require_once __DIR__ . '/../controllers/ProfileController.php';
 require_once __DIR__ . '/../controllers/Modifier_profileController.php';
 require_once __DIR__ . '/../controllers/Modifier_repasController.php';
+require_once __DIR__ . '/../controllers/DashboardController.php';
+
 
 class Router {
     public static function route () {
@@ -65,6 +67,11 @@ class Router {
             case 'logout':
                 $controller = new UserController();
                 $controller->logout();
+                break;
+
+            case 'dashboard':
+                $controller = new DashboardController();
+                $controller->index();
                 break;
 
             default:

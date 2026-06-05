@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;500;600&display=swap");
+
+:root {
+  --bg-deep: #0e0e0e;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-card-hover: rgba(255, 255, 255, 0.09);
+  --border: rgba(255, 255, 255, 0.08);
+  --gold: #e8a020;
+  --gold-light: #f5be55;
+  --gold-dim: rgba(232, 160, 32, 0.18);
+  --text: #f0ece4;
+  --text-muted: rgba(240, 236, 228, 0.45);
+  --radius: 14px;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-deep);
+  background-image:
+    radial-gradient(
+      ellipse 80% 60% at 10% 0%,
+      rgba(232, 160, 32, 0.07) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 90% 100%,
+      rgba(232, 160, 32, 0.05) 0%,
+      transparent 55%
+    );
+  color: var(--text);
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 64px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .titre {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.9rem;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
+.navbar .link ul,
+.navbar .avatar ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navbar .link a,
+.navbar .avatar a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbar .link a:hover {
+  color: var(--gold);
+}
+
+.navbar .avatar a {
+  background: var(--gold-dim);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* Page layout  */
+.dashboard-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Page title */
+.dashboard-wrapper > h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.6rem;
+  color: var(--text);
+  border-left: 4px solid var(--gold);
+  padding-left: 1rem;
+  line-height: 1;
+}
+
+/* Objectif card */
+.info {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.8rem;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+  overflow: hidden;
+  max-width: 280px;
+}
+
+.info::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-dim) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.info .label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.info .value {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+
+/* Sections (allergies + favoris) */
+.sections-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.6rem;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section h3 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--gold);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 0.55rem 0.8rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+
+.item:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(232, 160, 32, 0.3);
+}
+
+.item span {
+  color: var(--text);
+}
+
+/* Chart card */
+.chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+.chart-card h2 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+#caloriesChart {
+  max-height: 320px;
+  width: 100% !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dim);
+  border-radius: 999px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sections-row {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-wrapper {
+    padding: 1.5rem 1rem 3rem;
+  }
+  .info {
+    max-width: 100%;
+  }
+}

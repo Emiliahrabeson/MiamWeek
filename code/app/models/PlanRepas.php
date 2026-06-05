@@ -2,15 +2,11 @@
 require_once __DIR__ . '/../core/Model.php';
 
 class PlanRepas extends Model {
-    public function getPlanSemaine($id_user)
-    {
+    public function getPlanSemaine($id_user) {
         $lundi = date('Y-m-d', strtotime('monday this week'));
         $dimanche = date('Y-m-d', strtotime('sunday this week'));
-
         $jours_ordre = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
-
         $types_repas = ['Petit-déjeuner','Déjeuner','Dîner'];
-
         $stmt = $this->pdo->prepare(
             "SELECT id_plan
              FROM Plan_de_repas
@@ -101,7 +97,6 @@ class PlanRepas extends Model {
             }
 
             if ($row['id_recette']) {
-
                 $planData[$jour][$type]['recettes'][] = [
                     'id' => $row['id_recette'],
                     'nom' => $row['nom_recette'],
@@ -115,4 +110,5 @@ class PlanRepas extends Model {
 
         return $planData;
     }
+
 }

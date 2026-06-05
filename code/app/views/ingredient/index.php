@@ -15,7 +15,7 @@
       <li><a href="index.php?page=home">Home</a></li>
       <li><a href="index.php?page=recette">Recettes</a></li>
       <li><a href="index.php?page=ingredient">Ingredient</a></li>
-      <li><a href="index.php?page=dahsboard">Dashboard</a></li>
+      <li><a href="index.php?page=dashboard">Dashboard</a></li>
     </ul>
   </div>
   <div class="avatar">

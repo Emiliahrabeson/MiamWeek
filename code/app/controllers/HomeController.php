@@ -20,7 +20,7 @@ class HomeController {
 
         $dashb = new Dashboard();
         $stats = $dashb->getStats();
-         [$nb_recettes,$nb_ingredients,$nb_repas,$nb_plans] = $stats;
+        [$nb_recettes,$nb_ingredients,$nb_repas,$nb_plans] = $stats;
 
         $planModel = new PlanRepas();
         $planData = $planModel->getPlanSemaine($id_user);

@@ -15,6 +15,7 @@
           <li><a href="index.php?page=home">Home</a></li>
           <li><a href="index.php?page=recette">Recettes</a></li>
           <li><a href="index.php?page=ingredient">Ingredient</a></li>
+          <li><a href="index.php?page=course">Mes courses</a></li>
           <li><a href="index.php?page=dashboard">Dashboard</a></li>
       </ul>
   </div>

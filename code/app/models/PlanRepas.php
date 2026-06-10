@@ -22,7 +22,7 @@ class PlanRepas extends Model {
                 (date_debut, date_fin, id_user)
                 VALUES (?, ?, ?)"
             )->execute([$lundi, $dimanche, $id_user]);
-
+ 
             $id_plan = $this->pdo->lastInsertId();
 
             for ($i = 0; $i < 7; $i++) {

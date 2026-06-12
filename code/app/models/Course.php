@@ -36,7 +36,6 @@ class Course extends Model {
             GROUP BY i.id_ingredient
             ORDER BY i.nom
         ");
-
         $stmt->execute([$id_plan]);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

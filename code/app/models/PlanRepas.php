@@ -17,11 +17,11 @@ class PlanRepas extends Model {
         $jours_ordre = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
         $types_repas = ['Petit-déjeuner','Déjeuner','Dîner'];
 
-        $stmt = $$this->pdo->prepare(
+        $cal = $this->pdo->prepare(
             "SELECT objectif_calorie_daily FROM Users WHERE id_user = :id_user;"
         );
-        $stmt->execute(['id_user' => $id_user]);
-        $objectif_cal = $stmt->fetch();
+        $cal->execute(['id_user' => $id_user]);
+        $objectif_cal = $cal->fetch();
 
         $stmt = $this->pdo->prepare(
             "SELECT id_plan

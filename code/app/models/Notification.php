@@ -2,18 +2,18 @@
 require_once __DIR__ . "/../core/Model.php";
 
 class Notification extends Model {
-    public function createNotification ($id_user,$type_notification,$message){
+    public function createNotification ($id_user,$type_notification,$message,$date_envoi){
         $stmt = $this->pdo->prepare("
             INSERT INTO Notification (id_user,type_notification,message,date_envoi)
-            VALUES (?,?,?);
+            VALUES (?,?,?,?);
         ");
 
         $stmt->execute([$id_user,$type_notification,$message,$date_envoi]);
     }
 
 
-    public function rappelEau ($id_user)
-     {$maintenant = new DateTime();
+    public function rappelEau ($id_user) {
+        $maintenant = new DateTime();
         $verify = $this->pdo->prepare(
             "SELECT COUNT(*)
             FROM Notification
@@ -25,7 +25,7 @@ class Notification extends Model {
         $count = $verify->fetchColumn();
 
         if ($count == 0) {
-            createNotification(
+            $this->createNotification(
                 $id_user,
                 'RAPPEL_EAU',
                 "N'oubliez pas de boire suffisamment d'eau aujourd'hui.",
@@ -51,7 +51,7 @@ class Notification extends Model {
         $count = $verify->fetchColumn();
 
         if ($count == 0) {
-            createNotification(
+            $this->createNotification(
                 $id_user,
                 'LISTE_COURSE',
                 'Pensez à compléter tous les ingrédients de votre liste de courses.',
@@ -77,7 +77,7 @@ class Notification extends Model {
         $count = $verify->fetchColumn();
 
         if ($count == 0) {
-            createNotification(
+            $this->createNotification(
                 $id_user,
                 'SUIVI_PLANNING',
                 "N'oubliez pas de bien suivre votre planning pour atteindre votre objectif.",
@@ -88,7 +88,7 @@ class Notification extends Model {
     }
 
     public function mdpModifier ($id_user) {
-        createNotification(
+       $this-> createNotification(
             $id_user,
             'MDP_MODIFIE',
             'Votre mot de passe a été modifié avec succès.'
@@ -96,7 +96,7 @@ class Notification extends Model {
     }
 
     public function reinitialiserMdp ($id_user) {
-        createNotification(
+        $this->createNotification(
             $id_user,
             'REINITIALISATION_MDP',
             'Consultez votre adresse e-mail pour réinitialiser votre mot de passe.'

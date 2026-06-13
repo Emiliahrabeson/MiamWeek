@@ -2,11 +2,27 @@
 require_once __DIR__ . '/../core/Model.php';
 
 class PlanRepas extends Model {
+    public function createNotification ($id_user,$type_notification,$message){
+        $stmt = $this->pdo->prepare("
+            INSERT INTO Notification (id_user,type_notification,message)
+            VALUES (?,?,?);
+        ");
+
+        $stmt->execute([$id_user,$type_notification,$message]);
+    }
+
     public function getPlanSemaine($id_user) {
         $lundi = date('Y-m-d', strtotime('monday this week'));
         $dimanche = date('Y-m-d', strtotime('sunday this week'));
         $jours_ordre = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
         $types_repas = ['Petit-déjeuner','Déjeuner','Dîner'];
+
+        $stmt = $$this->pdo->prepare(
+            "SELECT objectif_calorie_daily FROM Users WHERE id_user = :id_user;"
+        );
+        $stmt->execute(['id_user' => $id_user]);
+        $objectif_cal = $stmt->fetch();
+
         $stmt = $this->pdo->prepare(
             "SELECT id_plan
              FROM Plan_de_repas
@@ -103,9 +119,17 @@ class PlanRepas extends Model {
                     'calories' => $row['calories_par_centG']
                 ];
 
-                $planData[$jour][$type]['total_calories']
-                    += $row['calories_par_centG'];
+                $planData[$jour][$type]['total_calories'] += $row['calories_par_centG'];
+                if (($planData[$jour][$type]['total_calories'] >= $objectif_cal)) {
+                    creerNotification(
+                                $id_user,
+                                'OBJECTIF_ATTEINT',
+                                'Félicitations, Vous avez atteint votre objectif calorique du jour.'
+                            );
+                }
+                    
             }
+
         }
 
         return $planData;

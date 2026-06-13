@@ -317,3 +317,8 @@ h1 {
   text-align: center;
   font-weight: bold;
 }
+
+.bell_img {
+  width: 30px;
+  height: auto;
+}

@@ -8,6 +8,7 @@ require_once __DIR__ . '/../controllers/Modifier_profileController.php';
 require_once __DIR__ . '/../controllers/Modifier_repasController.php';
 require_once __DIR__ . '/../controllers/DashboardController.php';
 require_once __DIR__ . '/../controllers/CourseController.php';
+require_once __DIR__ . '/../controllers/NotificationController.php';
 
 class Router {
     public static function route () {
@@ -76,6 +77,11 @@ class Router {
 
             case 'course':
                 $controller = new CourseController();
+                $controller->index();
+                break;
+
+            case 'notification':
+                $controller = new NotificationController();
                 $controller->index();
                 break;
 

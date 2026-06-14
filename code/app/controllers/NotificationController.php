@@ -18,7 +18,7 @@ class NotificationController {
         $notification->listeCourse($id_user);
         $notification->suiviPlanning($id_user);
         $notifications = $notification->getNotifications($id_user);
-
+ 
 
         require __DIR__ . '/../views/notification/index.php';
     }

@@ -74,9 +74,7 @@
             </div>
 
     </div>
-    <div class="btn-retour">
-        <a href="index.php?page=home">Retour</a>
-    </div>
+
 </div>
 </body>
 </html>

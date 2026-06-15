@@ -47,8 +47,6 @@
         </div>
 
         <button type="submit" class="btn-submit">Se connecter </button>
-
-
     </form>
 
     <div class="register-link">

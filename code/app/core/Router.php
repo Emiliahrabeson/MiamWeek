@@ -91,6 +91,7 @@ class Router {
                 $controller->index();
                 break;
 
+
             default:
                 echo "Page introuvable";
                 break;

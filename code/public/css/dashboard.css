@@ -36,53 +36,58 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2.5rem;
-  height: 64px;
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  padding: 20px 60px;
+  background-color: rgba(255, 255, 255, 0);
 }
 
-.navbar .titre {
+.titre {
   font-family: "Dancing Script", cursive;
-  font-size: 1.9rem;
-  color: var(--text);
-  letter-spacing: 0.5px;
+  font-size: 45px;
+  margin: 0;
+  color: #fff;
+}
+.link {
+  padding-left: 350px;
 }
 
-.navbar .link ul,
-.navbar .avatar ul {
+.link ul {
   display: flex;
-  gap: 2rem;
+  list-style: none;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.link li {
+  font-size: 20px;
+  font-family: Playfair Display;
+}
+
+.link li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.avatar a {
+  color: #1e1e1e;
+  font-weight: bold;
   list-style: none;
 }
 
-.navbar .link a,
-.navbar .avatar a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: color 0.2s;
+.up {
+  background-color: #dbaf2c;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #1e1e1e;
+  cursor: pointer;
 }
 
-.navbar .link a:hover {
-  color: var(--gold);
-}
-
-.navbar .avatar a {
-  background: var(--gold-dim);
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  padding: 0.35rem 1rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-}
-
-/* Page layout  */
 .dashboard-wrapper {
   max-width: 1200px;
   margin: 0 auto;

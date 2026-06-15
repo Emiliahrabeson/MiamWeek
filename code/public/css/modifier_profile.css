@@ -36,7 +36,7 @@ body {
 
 .modif {
   width: 500px;
-  background: #fdfaf7;
+  background: rgba(0, 0, 0, 0.15);
   border: 1px solid #ddd5cb;
   border-radius: 18px;
   padding: 35px;

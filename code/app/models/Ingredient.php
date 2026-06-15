@@ -30,7 +30,7 @@ class Ingredient extends Model {
         if ($raw === false) {
             return [
                 'ingredients' => [],
-                'erreur_api' => "Service OpenFoodFacts indisponible."
+                'erreur_api' => "Service indisponible, veuillez attendre un peu."
             ];
         }
 

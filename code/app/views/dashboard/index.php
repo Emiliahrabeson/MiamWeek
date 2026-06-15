@@ -10,20 +10,20 @@
 <body>
 
 <div class="navbar">
-    <h1 class="titre">MiamWeek</h1>
-    <div class="link">
-        <ul>
-            <li><a href="index.php?page=home">Home</a></li>
-            <li><a href="index.php?page=recette">Recettes</a></li>
-            <li><a href="index.php?page=ingredient">Ingredient</a></li>
-            <li><a href="index.php?page=dashboard">Dashboard</a></li>
-        </ul>
-    </div>
-    <div class="avatar">
-        <ul>
-            <li class="up"><a href="index.php?page=profile"><?= $nom_user ?></a></li>
-        </ul>
-    </div>
+  <h1 class="titre">MiamWeek</h1>
+  <div class="link">
+    <ul>
+      <li><a href="index.php?page=home">Home</a></li>
+      <li><a href="index.php?page=recette">Recettes</a></li>
+      <li><a href="index.php?page=ingredient">Ingredient</a></li>
+      <li><a href="index.php?page=dashboard">Dashboard</a></li>
+    </ul>
+  </div>
+  <div class="avatar">
+    <ul>
+      <li class="up"><a href="index.php?page=profile"><?= htmlspecialchars($prenom_user) ?></a></li>
+    </ul>
+  </div>
 </div>
 
 <div class="dashboard-wrapper">
@@ -31,7 +31,7 @@
     <h1>Dashboard</h1>
     <div class="info">
         <p class="label">Objectif calorique / jour</p>
-        <p class="value"><?= $user['objectif_calorie_daily'] ?> kcal</p>
+        <p class="value"><?= $objectif ?> kcal</p>
     </div>
 
     <div class="sections-row">

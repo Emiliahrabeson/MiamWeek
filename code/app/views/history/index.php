@@ -19,10 +19,7 @@
           <li><a href="index.php?page=dashboard">Dashboard</a></li>
       </ul>
   </div>
-  <div class="nav-icons">
-    <a href="index.php?page=notification"><img class="bell_img" src="/images/bell.png" alt="notification"></a>
-    <a href="index.php?page=history"><img class="bell_img" src="/images/history.png" alt="historique"></a>
-  </div>
+  <a href="index.php?page=notification"><img class="bell_img"src="/images/notification.png" alt="bell"></a>
   <div class="avatar">
       <ul>
           <li class="up"><a href="index.php?page=profile"><?=$prenom_user?></a></li>
@@ -31,33 +28,7 @@
 
 </div>
 
-<div class="titre">
-    <h1>Bienvenue sur MiamWeek</h1>
-
-<div class="statistique">
-
-  <div class="stat-card">
-    <h3>Recettes</h3>
-    <p><?= $nb_recettes ?></p>
-  </div>
-
-  <div class="stat-card">
-    <h3>Ingrédients</h3>
-    <p><?= $nb_ingredients ?></p>
-  </div>
-
-  <div class="stat-card">
-    <h3>Repas</h3>
-    <p><?= $nb_repas ?></p>
-  </div>
-
-  <div class="stat-card">
-    <h3>Plans</h3>
-    <p><?= $nb_plans ?></p>
-  </div>
-
-</div>
-
+    <h1>Historique</h1>
 
 <div class="plan">
     <h2 class="plan-titre"> Plan de repas de la semaine</h2>
@@ -86,7 +57,7 @@
             <span class="repas-nom"><?= $type ?></span>
           </td>
           <?php foreach ($jours_ordre as $jour): 
-            $slot   = $planData[$jour][$type] ?? null;
+            $slot   = $planDataHistory[$jour][$type] ?? null;
             $repas  = $slot['recettes'] ?? [];
             $id_rep = $slot['id_repas'] ?? null;
           ?>
@@ -98,12 +69,6 @@
                     <span class="cal-badge"><?= $rec['calories'] ?> kcal</span>
                   <?php endif; ?>
                 <?php endforeach; ?>
-                <a href="index.php?page=modifier_repas&id_repas=<?= $id_rep ?>"
-                   class="btn-modifier"> Modifier</a>
-              <?php else: ?>
-                <span class="vide-icon">+</span>
-                <a href="index.php?page=modifier_repas&id_repas=<?= $id_rep ?>"
-                   class="btn-ajouter">Ajouter</a>
               <?php endif; ?>
             </td>
           <?php endforeach; ?>
@@ -119,7 +84,7 @@
               $totalJour = 0;
 
               foreach ($types_repas as $type) {
-                  $totalJour += $planData[$jour][$type]['total_calories'] ?? 0;
+                  $totalJour += $planDataHistory[$jour][$type]['total_calories'] ?? 0;
               }
               ?>
 
@@ -138,4 +103,3 @@
 
 </body>
 </html>
-

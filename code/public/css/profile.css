@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "Dancing Script";
+  src: url("/images/fonts/DancingScript-Regular.ttf");
+}
+
+@font-face {
+  font-family: Playfair Display;
+  src: url("/images/fonts/PlayfairDisplay-Medium.ttf");
+}
+
+@font-face {
+  font-family: clicker script;
+  src: url("/images/fonts/ClickerScript-Regular.ttf");
+}
+
 *,
 *::before,
 *::after {
@@ -10,12 +25,37 @@ body {
   min-height: 100vh;
   background:
     linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-    url("/images/background2.webp") center/cover fixed;
+    url("/images/background_log.jpg") center/cover fixed;
   font-family: "DM Sans", sans-serif;
   color: #1e1610;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
   align-items: center;
+  gap: 20px;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+}
+
+.retour {
+  width: 28px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  transition: 0.2s;
+}
+
+.retour:hover {
+  transform: translateX(-4px);
 }
 
 .profile {
@@ -26,11 +66,13 @@ body {
 }
 
 .me {
-  width: 450px;
-  border: 4px solid #fff;
-  border-radius: 18px;
-  padding: 35px;
-  background-color: rgba(0, 0, 0, 0.15);
+  max-width: 900px;
+  margin: 120px auto 60px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  color: #fff;
 }
 
 .avatar-img {
@@ -55,13 +97,13 @@ body {
 }
 
 .label {
-  /* font-weight: bold; */
+  font-size: x-small;
   color: #fff;
   margin-bottom: 4px;
 }
 
 .value {
-  color: #1e1610;
+  color: #fff;
   padding-left: 5px;
   font-weight: bold;
   font-size: 19px;
@@ -72,13 +114,13 @@ body {
 }
 
 .section h3 {
-  font-size: 18px;
+  font-size: x-small;
   margin-bottom: 12px;
   color: #fff;
 }
 
 .item {
-  background: #f5f0eb;
+  background: rgba(0, 0, 0, 0.5);
   border: 1px solid #ddd5cb;
   padding: 10px 14px;
   border-radius: 10px;
@@ -144,5 +186,12 @@ body {
 }
 a {
   text-decoration: none;
+  color: #fff;
+}
+
+.titre {
+  font-family: "Dancing Script", cursive;
+  font-size: 45px;
+  margin: 0;
   color: #fff;
 }

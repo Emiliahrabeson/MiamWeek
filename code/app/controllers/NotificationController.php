@@ -10,6 +10,8 @@ class NotificationController {
 
         $id_user = $_SESSION["id_user"];
         $nom_user = $_SESSION["email"];
+        $prenom_user = $_SESSION["prenom"];
+        
         $date_aujourdhui = date('Y-m-d');
 
         $notification = new Notification();
@@ -18,7 +20,7 @@ class NotificationController {
         $notification->listeCourse($id_user);
         $notification->suiviPlanning($id_user);
         $notifications = $notification->getNotifications($id_user);
-
+ 
 
         require __DIR__ . '/../views/notification/index.php';
     }

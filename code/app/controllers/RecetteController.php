@@ -10,6 +10,7 @@ class RecetteController {
 
         $id_user = $_SESSION['id_user'];
         $nom_user = $_SESSION["email"];
+        $prenom_user = $_SESSION["prenom"];
 
         $rec = new Recette ();
 

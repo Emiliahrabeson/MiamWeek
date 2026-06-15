@@ -1,0 +1,165 @@
+@font-face {
+  font-family: "Dancing Script";
+  src: url("/images/fonts/DancingScript-Regular.ttf");
+}
+
+@font-face {
+  font-family: Playfair Display;
+  src: url("/images/fonts/PlayfairDisplay-Medium.ttf");
+}
+
+@font-face {
+  font-family: clicker script;
+  src: url("/images/fonts/ClickerScript-Regular.ttf");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("/images/notif_back.jpg") center/cover fixed;
+  font-family: "DM Sans", sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Navbar ── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 60px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.titre {
+  font-family: "Dancing Script", cursive;
+  font-size: 45px;
+  margin: 0;
+  color: #fff;
+}
+
+.link {
+  padding-left: 350px;
+}
+
+.link ul {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.link li {
+  font-size: 20px;
+  font-family: Playfair Display;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.link li:hover {
+  color: #dbaf2c;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+}
+
+.avatar ul {
+  list-style: none;
+}
+
+.avatar a {
+  color: #1e1e1e;
+  font-weight: bold;
+}
+
+.up {
+  background-color: #dbaf2c;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #1e1e1e;
+  cursor: pointer;
+}
+
+/* ── Contenu ── */
+.wrap {
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.page-titre {
+  font-family: "Dancing Script", cursive;
+  font-size: 36px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+/* ── Notification card ── */
+.notification {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(12px);
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.notification:hover {
+  background: rgba(255, 255, 255, 0.13);
+  transform: translateY(-2px);
+}
+
+.notification strong {
+  display: inline-block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(219, 175, 44, 0.2);
+  color: #dbaf2c;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.notification p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.date {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Aucune notification ── */
+.aucune {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  margin-top: 80px;
+}

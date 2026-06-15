@@ -10,6 +10,7 @@ class CourseController {
 
         $id_user = $_SESSION["id_user"];
         $nom_user = $_SESSION["email"];
+        $prenom_user = $_SESSION["prenom"];
 
         $course = new Course();
         $id_plan = $course->getPlanSemaine($id_user);

@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "Dancing Script";
+  src: url("/images/fonts/DancingScript-Regular.ttf");
+}
+
+@font-face {
+  font-family: Playfair Display;
+  src: url("/images/fonts/PlayfairDisplay-Medium.ttf");
+}
+
+@font-face {
+  font-family: clicker script;
+  src: url("/images/fonts/ClickerScript-Regular.ttf");
+}
+
 *,
 *::before,
 *::after {
@@ -10,22 +25,55 @@ body {
   min-height: 100vh;
   background:
     linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-    url("/images/background2.webp") center/cover fixed;
-
+    url("/images/background_log.jpg") center/cover fixed;
   font-family: "DM Sans", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: #1e1610;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .modif {
   width: 500px;
-  background: #fdfaf7;
+  background: rgba(0, 0, 0, 0.15);
   border: 1px solid #ddd5cb;
   border-radius: 18px;
   padding: 35px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  margin-top: 80px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+}
+
+.retour {
+  width: 28px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  transition: 0.2s;
+}
+
+.retour:hover {
+  transform: translateX(-4px);
+}
+
+.titre {
+  font-family: "Dancing Script", cursive;
+  font-size: 45px;
+  margin: 0;
+  color: #fff;
 }
 
 form {

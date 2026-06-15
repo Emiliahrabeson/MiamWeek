@@ -21,13 +21,13 @@
   </div>
   <div class="avatar">
       <ul>
-          <li class="up"><a href="index.php?page=profile"><?=$nom_user?></a></li>
+          <li class="up"><a href="index.php?page=profile"><?=$prenom_user?></a></li>
       </ul>
   </div>
 </div>
 
 <div class="wrap">
-
+ 
 <div class="panel">
     <div class="search-bar">
     <form method="POST" action="">

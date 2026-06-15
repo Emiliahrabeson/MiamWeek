@@ -37,7 +37,7 @@ body {
   color: #fff;
 }
 .link {
-  padding-right: 300px;
+  padding-left: 350px;
 }
 
 .link ul {
@@ -67,7 +67,9 @@ a {
 .avatar a {
   color: #1e1e1e;
   font-weight: bold;
+  list-style: none;
 }
+
 .up {
   background-color: #dbaf2c;
   padding: 10px 20px;
@@ -321,4 +323,18 @@ h1 {
 .bell_img {
   width: 30px;
   height: auto;
+  cursor: pointer;
+  transition: 0.2s;
+  filter: brightness(0) invert(1);
+}
+
+.bell_img:hover {
+  transform: scale(1.15);
+  filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(219, 175, 44, 0.8));
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }

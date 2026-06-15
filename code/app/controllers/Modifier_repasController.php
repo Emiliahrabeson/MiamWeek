@@ -10,6 +10,8 @@ class Modifier_repasController {
         }
 
         $nom_user = $_SESSION['email'];
+        $prenom_user = $_SESSION["prenom"];
+        
         $id_repas = (int)($_GET['id_repas'] ?? 0);
 
         if (!$id_repas) {

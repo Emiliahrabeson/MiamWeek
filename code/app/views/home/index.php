@@ -19,16 +19,17 @@
           <li><a href="index.php?page=dashboard">Dashboard</a></li>
       </ul>
   </div>
-  <a href="index.php?page=notification"><img class="bell_img"src="/images/notification.png" alt="bell"></a>
-   <a href="index.php?page=history">H</a>
+  <div class="nav-icons">
+    <a href="index.php?page=notification"><img class="bell_img" src="/images/bell.png" alt="notification"></a>
+    <a href="index.php?page=history"><img class="bell_img" src="/images/history.png" alt="historique"></a>
+  </div>
   <div class="avatar">
       <ul>
-          <li class="up"><a href="index.php?page=profile"><?=$nom_user?></a></li>
+          <li class="up"><a href="index.php?page=profile"><?=$prenom_user?></a></li>
       </ul>
   </div>
 
 </div>
-
 
 <div class="titre">
     <h1>Bienvenue sur MiamWeek</h1>

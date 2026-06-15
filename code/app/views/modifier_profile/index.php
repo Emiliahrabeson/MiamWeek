@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="/css/modifier_profile.css">
 </head>
 <body>
+    <div class="navbar">
+        <a href="index.php?page=home"><img class="retour" src="/images/retour.png" alt=""></a>
+        <h1 class="titre">MiamWeek</h1>
+    </div>
+    
     <div class="modif">
         <form method="POST">
             <input type="text"

@@ -22,7 +22,7 @@
   <a href="index.php?page=notification"><img class="bell_img"src="/images/notification.png" alt="bell"></a>
   <div class="avatar">
       <ul>
-          <li class="up"><a href="index.php?page=profile"><?=$nom_user?></a></li>
+          <li class="up"><a href="index.php?page=profile"><?=$prenom_user?></a></li>
       </ul>
   </div>
 

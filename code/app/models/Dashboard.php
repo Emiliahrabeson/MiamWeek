@@ -12,7 +12,7 @@ class Dashboard extends Model {
         return [$nb_recettes,$nb_ingredients,$nb_repas,$nb_plans];
     }
 
-    public function getCaloriesSemaine($id_user) {
+    public function getCaloriesSemaine($id_user) {          // chaque j
         $planRepas = new PlanRepas();
         $plan = $planRepas->getPlanSemaine($id_user);
 
@@ -31,7 +31,7 @@ class Dashboard extends Model {
         return $resultat;
     }
 
-    public function getObjectifCalorique($id_user) {
+    public function getObjectifCalorique($id_user) {        // sur le diagramme
         $stmt = $this->pdo->prepare(
             "SELECT objectif_calorie_daily
              FROM Users
@@ -41,18 +41,6 @@ class Dashboard extends Model {
         $stmt->execute([$id_user]);
 
         return $stmt->fetchColumn();
-    }
-
-    public function getObjectifCalories ($email) {
-        $stmt = $this->pdo->prepare("
-            SELECT nom, prenom, objectif_calorie_daily
-            FROM Users
-            WHERE email = :email
-        ");
-        $stmt->execute(['email' => $email]);
-
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-
     }
 
     public function getAllergies ($email) {

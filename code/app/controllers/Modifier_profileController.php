@@ -10,6 +10,7 @@ class Modifier_profileController {
             exit();
         }
         $email = $_SESSION['email'];
+        $prenom_user = $_SESSION["prenom"];
 
         $model = new ModifierProfile();
         $user = $model->getUser($email);

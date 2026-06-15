@@ -10,6 +10,8 @@ class NotificationController {
 
         $id_user = $_SESSION["id_user"];
         $nom_user = $_SESSION["email"];
+        $prenom_user = $_SESSION["prenom"];
+        
         $date_aujourdhui = date('Y-m-d');
 
         $notification = new Notification();

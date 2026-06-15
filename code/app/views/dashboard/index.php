@@ -21,7 +21,7 @@
     </div>
     <div class="avatar">
         <ul>
-            <li class="up"><a href="index.php?page=profile"><?= $nom_user ?></a></li>
+            <li class="up"><a href="index.php?page=profile"><?= $prenom_user ?></a></li>
         </ul>
     </div>
 </div>
@@ -31,7 +31,7 @@
     <h1>Dashboard</h1>
     <div class="info">
         <p class="label">Objectif calorique / jour</p>
-        <p class="value"><?= $user['objectif_calorie_daily'] ?> kcal</p>
+        <p class="value"><?= $objectif ?> kcal</p>
     </div>
 
     <div class="sections-row">

@@ -9,9 +9,9 @@ class DashboardController {
         }
         $id_user = $_SESSION['id_user'];
         $username = $_SESSION["email"];
+        $prenom_user = $_SESSION["prenom"];
 
         $dashboard = new Dashboard();
-        $user = $dashboard->getObjectifCalories($username);
         $caloriesSemaine = $dashboard->getCaloriesSemaine($id_user);
         $objectif = $dashboard->getObjectifCalorique($id_user);
 

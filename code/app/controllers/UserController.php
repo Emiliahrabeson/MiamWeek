@@ -18,10 +18,13 @@ class UserController {
                 if ($user && password_verify($password, $user['password'])) {
                     $_SESSION['id_user'] = $user['id_user'];
                     $_SESSION['email'] = $user['email'];
+                    $_SESSION['prenom'] = $user['prenom'];
 
                     header("Location: index.php?page=home");
                     exit();
+                    
                 }
+                
                 $error = "email ou mot de passe incorrect";
             }
 

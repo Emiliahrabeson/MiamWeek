@@ -10,6 +10,8 @@ class IngredientController {
         }
 
         $nom_user = $_SESSION['email'];
+        $prenom_user = $_SESSION["prenom"];
+        
         $ingredientModel = new Ingredient();
         $erreur_api = '';
 

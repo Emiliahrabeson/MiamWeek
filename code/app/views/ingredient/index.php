@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -20,7 +20,7 @@
   </div>
   <div class="avatar">
     <ul>
-      <li class="up"><a href="index.php?page=profile"><?= htmlspecialchars($nom_user) ?></a></li>
+      <li class="up"><a href="index.php?page=profile"><?= htmlspecialchars($prenom_user) ?></a></li>
     </ul>
   </div>
 </div>
@@ -37,27 +37,56 @@
       </form>
     </div>
 
+    <div class="panel-titre">Ingrédients</div>
+
     <?php if (!empty($erreur_api)): ?>
-    <p class="erreur"><?= $erreur_api ?></p>
+      <p class="aucun"><?= $erreur_api ?></p>
+
     <?php elseif (!empty($ingredients)): ?>
-        <?php foreach ($ingredients as $s): ?>
-             <div class="sug-card">
-            <div class="sug-card-body">
-              <h4><?= htmlspecialchars($s['nom']) ?></h4>
-              <p>
-                <?= htmlspecialchars($s['categories']) ?> :
-                <span class="kcal">
-                  <?= (int)$s['calories_par_centG'] ?> kcal / 100g
-                </span>
-              </p>
-            </div>
+
+      <?php
+        $par_page = 12;
+        $page_courante = max(1, (int)($_GET['p'] ?? 1));
+        $total = count($ingredients);
+        $nb_pages = ceil($total / $par_page);
+        $debut = ($page_courante - 1) * $par_page;
+        $affichage = array_slice($ingredients, $debut, $par_page);
+        $search_query = urlencode($_POST['search'] ?? '');
+      ?>
+
+      <div class="ing-grid">
+        <?php foreach ($affichage as $s): ?>
+          <div class="ing-card">
+            <span class="ing-categorie"><?= htmlspecialchars($s['categories']) ?></span>
+            <h4><?= htmlspecialchars($s['nom']) ?></h4>
+            <p><span class="kcal"><?= (int)$s['calories_par_centG'] ?> kcal</span> / 100g</p>
           </div>
         <?php endforeach; ?>
-    <?php else: ?>
-        <p>Aucun ingrédient trouvé.</p>
-    <?php endif; ?>
+      </div>
 
-    </div>
+      <?php if ($nb_pages > 1): ?>
+      <div class="pagination">
+        <?php if ($page_courante > 1): ?>
+          <a href="?page=ingredient&p=<?= $page_courante - 1 ?>">← Précédent</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $nb_pages; $i++): ?>
+          <?php if ($i == $page_courante): ?>
+            <span class="active"><?= $i ?></span>
+          <?php else: ?>
+            <a href="?page=ingredient&p=<?= $i ?>"><?= $i ?></a>
+          <?php endif; ?>
+        <?php endfor; ?>
+
+        <?php if ($page_courante < $nb_pages): ?>
+          <a href="?page=ingredient&p=<?= $page_courante + 1 ?>">Suivant →</a>
+        <?php endif; ?>
+      </div>
+      <?php endif; ?>
+
+    <?php else: ?>
+      <p class="aucun">Aucun ingrédient trouvé.</p>
+    <?php endif; ?>
 
   </div>
 </div>

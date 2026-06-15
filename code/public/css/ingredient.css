@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "Dancing Script";
+  src: url("/images/fonts/DancingScript-Regular.ttf");
+}
+
+@font-face {
+  font-family: Playfair Display;
+  src: url("/images/fonts/PlayfairDisplay-Medium.ttf");
+}
+
+@font-face {
+  font-family: clicker script;
+  src: url("/images/fonts/ClickerScript-Regular.ttf");
+}
+
 *,
 *::before,
 *::after {
@@ -8,15 +23,14 @@
 
 :root {
   --bg: #f5f0eb;
-  --card: #fdfaf7;
-  --brand: #b8622a;
-  --brand2: #8f4a1e;
-  --text: #1e1610;
-  --muted: #8a7566;
-  --border: #ddd5cb;
+  --card: rgba(255, 255, 255, 0.08);
+  --brand: #dbaf2c;
+  --brand2: #b89620;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.6);
+  --border: rgba(255, 255, 255, 0.15);
   --danger: #c0392b;
   --success: #2e7d52;
-  --accent: #e8c49a;
 }
 
 body {
@@ -27,6 +41,7 @@ body {
   color: var(--text);
   font-size: 14px;
   line-height: 1.5;
+  min-height: 100vh;
 }
 
 .navbar {
@@ -43,6 +58,7 @@ body {
   margin: 0;
   color: #fff;
 }
+
 .link {
   padding-right: 300px;
 }
@@ -53,17 +69,17 @@ body {
   gap: 40px;
   margin: 0;
   padding: 0;
-  color: #fff;
 }
 
 .link li {
   font-size: 20px;
   font-family: Playfair Display;
-}
-
-.link li {
   cursor: pointer;
   transition: 0.3s;
+}
+
+.link li:hover {
+  color: var(--brand);
 }
 
 a {
@@ -75,13 +91,16 @@ a {
   color: #1e1e1e;
   font-weight: bold;
 }
+
 .up {
   background-color: #dbaf2c;
   padding: 10px 20px;
   border-radius: 20px;
   color: #1e1e1e;
   cursor: pointer;
+  list-style: none;
 }
+
 .wrap {
   max-width: 1100px;
   margin: 0 auto;
@@ -89,120 +108,169 @@ a {
 }
 
 .search-bar {
+  margin-bottom: 24px;
+}
+
+.search-bar form {
   display: flex;
-  gap: 8px;
-  margin-bottom: 22px;
+  gap: 10px;
 }
 
 .search-input {
-  width: 900px;
   flex: 1;
   border: 1px solid var(--border);
-  border-radius: 5px;
-  padding: 9px 14px;
+  border-radius: 8px;
+  padding: 10px 16px;
   font-family: inherit;
-  font-size: 13px;
-  background: var(--card);
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.1);
   outline: none;
-  transition: border-color 0.15s;
+  color: #fff;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
 }
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.search-input:focus {
+  border-color: var(--brand);
+  background: rgba(255, 255, 255, 0.15);
+}
+
 .submit {
-  padding: 10px 4px 10px 4px;
-  background-color: #dbaf2c;
+  padding: 10px 22px;
+  background-color: var(--brand);
   border: none;
   cursor: pointer;
-  border-radius: 3px;
-}
-
-.sug-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
-  gap: 12px;
-}
-.sug-card {
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow: hidden;
-  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e1e1e;
   transition:
-    box-shadow 0.2s,
+    background 0.2s,
     transform 0.2s;
-  background: var(--bg);
-}
-.sug-card:hover {
-  box-shadow: 0 6px 18px rgba(184, 98, 42, 0.15);
-  transform: translateY(-2px);
-}
-.sug-card img {
-  width: 100%;
-  height: 82px;
-  object-fit: cover;
-  display: block;
-}
-.sug-card-body {
-  padding: 8px 10px;
-}
-.sug-card-body h4 {
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 2px;
-}
-.sug-card-body p {
-  font-size: 11px;
-  color: var(--muted);
 }
 
-.week-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+.submit:hover {
+  background-color: var(--brand2);
+  transform: translateY(-1px);
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+.panel {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  backdrop-filter: blur(14px);
 }
-th {
-  text-align: left;
-  padding: 8px 11px;
-  border-bottom: 2px solid var(--border);
-  color: var(--muted);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  font-weight: 500;
-}
-td {
-  padding: 11px;
+
+.panel-titre {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  color: #fff;
+  margin-bottom: 20px;
   border-bottom: 1px solid var(--border);
-  vertical-align: middle;
+  padding-bottom: 12px;
 }
-tr:last-child td {
-  border-bottom: none;
+
+.ing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.ing-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+  color: #fff;
+}
+
+.ing-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.ing-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.ing-card p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.ing-categorie {
+  display: inline-block;
+  font-size: 10px;
+  background: rgba(219, 175, 44, 0.2);
+  color: var(--brand);
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
 }
 
 .kcal {
   color: var(--brand);
-  font-weight: 600;
-  font-size: 12px;
-}
-.fav-btn {
-  display: block;
-  margin-top: 10px;
-  text-align: center;
-  text-decoration: none;
-  background: #b8622a;
-  color: white;
-  padding: 8px;
-  border-radius: 8px;
-  font-size: 13px;
-  transition: 0.2s;
+  font-weight: 700;
 }
 
-.fav-btn:hover {
-  background: #8f4a1e;
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  background: var(--brand);
+  color: #1e1e1e;
+  border-color: var(--brand);
+}
+
+.pagination .active {
+  background: var(--brand);
+  color: #1e1e1e;
+  border-color: var(--brand);
+  font-weight: 700;
+}
+
+.aucun {
+  color: var(--muted);
+  text-align: center;
+  padding: 50px 0;
+  font-size: 15px;
 }

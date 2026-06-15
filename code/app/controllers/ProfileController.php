@@ -8,6 +8,7 @@ class ProfileController {
             exit();
         }
         $username = $_SESSION["email"];
+        $prenom_user = $_SESSION["prenom"];
 
         $profileModel = new Profile();
         $user = $profileModel->getObjectifCalories($username);

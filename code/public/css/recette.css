@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "Dancing Script";
+  src: url("/images/fonts/DancingScript-Regular.ttf");
+}
+
+@font-face {
+  font-family: Playfair Display;
+  src: url("/images/fonts/PlayfairDisplay-Medium.ttf");
+}
+
+@font-face {
+  font-family: clicker script;
+  src: url("/images/fonts/ClickerScript-Regular.ttf");
+}
+
 *,
 *::before,
 *::after {
@@ -8,7 +23,7 @@
 
 :root {
   --bg: #f5f0eb;
-  --card: #fdfaf7;
+  --card: rgba(0, 0, 0, 0.4);
   --brand: #b8622a;
   --brand2: #8f4a1e;
   --text: #1e1610;
@@ -21,8 +36,8 @@
 
 body {
   background:
-    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-    url("/images/background2.webp") center/cover fixed;
+    linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.45)),
+    url("/images/recette_bg.jpg") center/cover fixed;
   font-family: "DM Sans", sans-serif;
   color: var(--text);
   font-size: 14px;
@@ -105,6 +120,7 @@ a {
   background: var(--card);
   outline: none;
   transition: border-color 0.15s;
+  color: white;
 }
 .submit {
   padding: 10px 4px 10px 4px;
@@ -120,6 +136,7 @@ a {
   border-radius: 8px;
   padding: 22px;
   margin-bottom: 22px;
+  backdrop-filter: blur(12px);
 }
 .panel-titre {
   font-family: "Playfair Display", serif;
@@ -128,7 +145,7 @@ a {
   margin-bottom: 18px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
-  color: var(--text);
+  color: #fff;
 }
 .panel-titre small {
   font-family: "DM Sans", sans-serif;
@@ -178,6 +195,10 @@ a {
   color: var(--muted);
 }
 
+.sug-card-body a {
+  font-size: 11px;
+  color: #1e1610;
+}
 .week-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

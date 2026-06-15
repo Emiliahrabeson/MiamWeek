@@ -15,6 +15,7 @@ class HistoryController {
  
         $id_user = $_SESSION["id_user"];
         $nom_user = $_SESSION["email"];
+        $prenom_user = $_SESSION["prenom"];
 
         $planHistoryModel = new History();
         $planDataHistory = $planHistoryModel->getPlanHistory($id_user);
@@ -23,3 +24,4 @@ class HistoryController {
         require __DIR__ . '/../views/history/index.php';
     }
 }
+

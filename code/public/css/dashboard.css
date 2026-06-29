@@ -146,7 +146,6 @@ a {
   line-height: 1;
 }
 
-/* Sections (allergies + favoris) */
 .sections-row {
   display: grid;
   grid-template-columns: 1fr 1fr;

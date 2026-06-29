@@ -37,6 +37,7 @@ body {
 .modif {
   width: 500px;
   background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
   border: 1px solid #ddd5cb;
   border-radius: 18px;
   padding: 35px;
@@ -53,8 +54,6 @@ body {
   align-items: center;
   gap: 20px;
   padding: 20px 40px;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(6px);
   z-index: 100;
 }
 
@@ -89,10 +88,22 @@ input[type="text"] {
   border-radius: 10px;
   outline: none;
   font-size: 14px;
-  background: #f5f0eb;
+  background: rgba(255, 255, 255, 0.1);
+}
+input[type="password"] {
+  padding: 14px;
+  border: 1px solid #ddd5cb;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 input[type="text"]:focus {
+  border: 1px solid #b8622a;
+}
+
+input[type="password"]:focus {
   border: 1px solid #b8622a;
 }
 
@@ -112,7 +123,11 @@ input[type="submit"]:hover {
 }
 
 .fav {
-  margin-top: 20px;
+  margin-top: 30px;
+}
+.modif-titre {
+  margin-top: 30px;
+  color: #fff;
 }
 
 .fav p:first-child {
@@ -121,10 +136,20 @@ input[type="submit"]:hover {
   color: #b8622a;
   font-family: "Playfair Display", serif;
 }
-
-.fav p {
+.fav .ti {
   background: #f5f0eb;
   border: 1px solid #ddd5cb;
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.fav p {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ddd5cb;
+  color: #fff;
   border-radius: 10px;
   padding: 12px 15px;
   margin-bottom: 12px;

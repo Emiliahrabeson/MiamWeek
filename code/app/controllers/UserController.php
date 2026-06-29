@@ -3,7 +3,7 @@ require_once __DIR__ . '/../models/User.php';
 
 class UserController {
     public function login() {
-        session_start();
+        // session_start();
         $error = "";
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,7 +12,7 @@ class UserController {
 
             if (!empty($email) && !empty($password)) {
                 $userModel = new User();
-
+ 
                 $user = $userModel->findByEmail($email);
 
                 if ($user && password_verify($password, $user['password'])) {

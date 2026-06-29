@@ -40,10 +40,10 @@
                 <span>
                     <?= $allergie['nom'] ?>
                 </span>
-                <a class="delete-btn"
+                <!-- <a class="delete-btn"
                 href="index.php?page=deleteAllergie&id=<?= $allergie['id_ingredient'] ?>">
                     Enlever
-                </a>
+                </a> -->
             </div>
         <?php endforeach; ?>
 
@@ -55,10 +55,10 @@
                     <span>
                         <?= $fav['nom_recette'] ?>
                     </span>
-                    <a class="delete-btn"
+                    <!-- <a class="delete-btn"
                     href="index.php?page=deleteFavori&id=<?= $fav['id_recette'] ?>">
                         Enlever
-                    </a>
+                    </a> -->
                 </div>
             <?php endforeach; ?>
             </div>

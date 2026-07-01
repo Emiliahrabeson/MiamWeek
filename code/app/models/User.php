@@ -42,5 +42,46 @@ class User extends Model {
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function saveVerificationToken($email, $token) {
+        $stmt = $this->pdo->prepare(
+            "UPDATE Users
+            SET verification_token = :token,
+            WHERE email = :email"
+        );
+
+        return $stmt->execute([
+            'token' => $token,
+            'email' => $email
+        ]);
+        
+    }
+
+    public function findByToken($token){
+        $stmt = $this->pd->prepare(
+            "SELECT * FROM Users
+            WHERE verification_token = :token"
+        );
+
+        $stmt->execute([
+            'token' => $token
+        ]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function verifyAccount($user_id) {
+        $stmt = $this->pd->prepare(
+            "UPDATE Users
+            SET is_verified = 1,
+                verification_token = NULL
+            WHERE id_user = :id"
+        );
+
+        return $stmt->execute([
+            'id' => $user_id
+        ]);
+    }
+
 }
 

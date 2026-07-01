@@ -61,7 +61,15 @@ class UserController {
                     else {
                         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+                        $token = bin2hex(random_bytes(32));
                         $userModel->create($name,$prenom,$email,$hashedPassword);
+
+                        $userModel->saveVerificationToken($email,$token);
+
+                        $token_a_verifier = $userModel->findByToken($email);
+                        
+
+
 
                         header("Location: index.php?page=login");
                         exit();

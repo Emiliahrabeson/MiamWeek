@@ -16,21 +16,22 @@ class UserController {
                 $user = $userModel->findByEmail($email);
 
                 if ($user && password_verify($password, $user['password'])) {
-                    $_SESSION['id_user'] = $user['id_user'];
-                    $_SESSION['email'] = $user['email'];
-                    $_SESSION['prenom'] = $user['prenom'];
+                    if (!$user['is_verified']) {
+                        $error = "Veuillez confirmer votre adresse e-mail pour vous connecter.";
+                    } 
+                    else {
+                        $_SESSION['id_user'] = $user['id_user'];
+                        $_SESSION['email'] = $user['email'];
+                        $_SESSION['prenom'] = $user['prenom'];
 
-                    $ok = $userModel->verify_access($email);            //etoooooooooooooooooooooooooooooooooooo
-                    if ($ok) {
                         header("Location: index.php?page=home");
+                        exit();
                     }
-
-                    header("Location: index.php?page=login");       //etoooooooooooo
-                    exit();
-                    
+                }
+                else {
+                    $error = "Email ou mot de passe incorrect.";
                 }
                 
-                $error = "email ou mot de passe incorrect";
             }
 
             else {
@@ -84,9 +85,10 @@ class UserController {
 
                         
                     }
-                }
-                header("Location: index.php?page=login");
+                    header("Location: index.php?page=login");
                         exit();
+                }
+                
 
             }
             else {

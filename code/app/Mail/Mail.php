@@ -39,7 +39,7 @@ class Mail {
             // Destinataire
             $mail->addAddress($email, $nom);
 
-            $link = "http://localhost/monprojet/public/verify?token=" . urlencode($token);
+            $link = "http://localhost:8000/index.php?page=verify&token=" . urlencode($token);
             $mail->Subject = "Confirmation de votre compte";
 
             // HTML
@@ -67,17 +67,10 @@ class Mail {
                 </p>
 
                 <p>
-                    Si le bouton ne fonctionne pas, copiez ce lien dans votre navigateur :
-                </p>
-
-                <p>{$link}</p>
-
-                <hr>
-
-                <small>
                     Si vous n'êtes pas à l'origine de cette inscription,
                     ignorez simplement cet e-mail.
-                </small>
+                </p>
+
             ";
 
             // texte

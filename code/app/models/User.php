@@ -31,14 +31,7 @@ class User extends Model {
         ]);
     }
 
-    public function verify_access ($email) {            //etooooooooooooooooooooooooooooooo
-        $sql = "SELECT * FROM Users WHERE email = :email AND is_verified=1";
-        $stmt = $this->pdo->prepare($sql);
-
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-
-    }
-
+    
     public function emailExists($email) {
         $stmt = $this->pdo->prepare(
             "SELECT id_user FROM Users WHERE email = :email"
@@ -78,16 +71,16 @@ class User extends Model {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function verifyAccount($email) {
+    public function verifyAccount($id_user) {
         $stmt = $this->pdo->prepare(
             "UPDATE Users
             SET is_verified = 1,
                 verification_token = NULL
-            WHERE email = :email;"
+            WHERE id_user = :id_user"
         );
 
         return $stmt->execute([
-            'email' => $email
+            'id_user' => $id_user
         ]);
     }
 

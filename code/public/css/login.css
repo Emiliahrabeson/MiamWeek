@@ -129,6 +129,16 @@ body {
   margin-bottom: 1rem;
   font-family: sans-serif;
 }
+.success-msg {
+  background: #c0e99b;
+  border: 1px solid #46e746;
+  border-radius: 8px;
+  color: #2c1a0e;
+  font-size: 13px;
+  padding: 10px 12px;
+  margin-bottom: 1rem;
+  font-family: sans-serif;
+}
 
 .field {
   margin-bottom: 1rem;

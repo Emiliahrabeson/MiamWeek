@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../Mail/Mail.php';
 
 class UserController {
     public function login() {
-        // session_start();
         $error = "";
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -20,7 +20,12 @@ class UserController {
                     $_SESSION['email'] = $user['email'];
                     $_SESSION['prenom'] = $user['prenom'];
 
-                    header("Location: index.php?page=home");
+                    $ok = $userModel->verify_access($email);            //etoooooooooooooooooooooooooooooooooooo
+                    if ($ok) {
+                        header("Location: index.php?page=home");
+                    }
+
+                    header("Location: index.php?page=login");       //etoooooooooooo
                     exit();
                     
                 }
@@ -37,7 +42,7 @@ class UserController {
     }
 
     public function register () {
-        session_start();
+        // session_start();
         $error = "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -63,18 +68,25 @@ class UserController {
 
                         $token = bin2hex(random_bytes(32));
                         $userModel->create($name,$prenom,$email,$hashedPassword);
-
                         $userModel->saveVerificationToken($email,$token);
 
-                        $token_a_verifier = $userModel->findByToken($email);
+                        $mail = new Mail();
+
+                        if ($mail->sendVerificationEmail($email, $name, $token)) {
+                            $_SESSION['success'] = " Consultez votre boîte mail pour confirmer votre compte.";
+
+                            header("Location: index.php?page=login");
+                            exit();
+                        }
+                        else{
+                            $error = "Le compte a été créé mais l'e-mail n'a pas pu être envoyé.";
+                        }
+
                         
-
-
-
-                        header("Location: index.php?page=login");
-                        exit();
                     }
                 }
+                header("Location: index.php?page=login");
+                        exit();
 
             }
             else {
@@ -84,6 +96,25 @@ class UserController {
         
         require __DIR__ . '/../views/user/register.php';
 
+    }
+
+    public function verify() {
+        if (!isset($_GET['token'])) {
+            die("Token manquant.");
+        }
+        $token = $_GET['token'];
+
+        $userModel = new User();
+        $user = $userModel->findByToken($token);
+
+        if (!$user) {
+            die("Lien invalide.");
+        }
+
+        $userModel->verifyAccount($user['id_user']);
+
+        header("Location: index.php?page=login&verified=1");
+        exit();
     }
 
     public function logout() {

@@ -31,6 +31,14 @@ class User extends Model {
         ]);
     }
 
+    public function verify_access ($email) {            //etooooooooooooooooooooooooooooooo
+        $sql = "SELECT * FROM Users WHERE email = :email AND is_verified=1";
+        $stmt = $this->pdo->prepare($sql);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+
+    }
+
     public function emailExists($email) {
         $stmt = $this->pdo->prepare(
             "SELECT id_user FROM Users WHERE email = :email"
@@ -46,7 +54,7 @@ class User extends Model {
     public function saveVerificationToken($email, $token) {
         $stmt = $this->pdo->prepare(
             "UPDATE Users
-            SET verification_token = :token,
+            SET verification_token = :token
             WHERE email = :email"
         );
 
@@ -58,9 +66,9 @@ class User extends Model {
     }
 
     public function findByToken($token){
-        $stmt = $this->pd->prepare(
+        $stmt = $this->pdo->prepare(
             "SELECT * FROM Users
-            WHERE verification_token = :token"
+            WHERE verification_token = :token;"
         );
 
         $stmt->execute([
@@ -70,16 +78,16 @@ class User extends Model {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function verifyAccount($user_id) {
-        $stmt = $this->pd->prepare(
+    public function verifyAccount($email) {
+        $stmt = $this->pdo->prepare(
             "UPDATE Users
             SET is_verified = 1,
                 verification_token = NULL
-            WHERE id_user = :id"
+            WHERE email = :email;"
         );
 
         return $stmt->execute([
-            'id' => $user_id
+            'email' => $email
         ]);
     }
 

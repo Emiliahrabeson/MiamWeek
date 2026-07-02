@@ -91,6 +91,11 @@ class Router {
                 $controller->index();
                 break;
 
+            case 'verify':
+                $controller = new UserController();
+                $controller->verify();
+                break;
+
 
             default:
                 echo "Page introuvable";

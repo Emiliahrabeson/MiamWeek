@@ -31,6 +31,7 @@ class User extends Model {
         ]);
     }
 
+    
     public function emailExists($email) {
         $stmt = $this->pdo->prepare(
             "SELECT id_user FROM Users WHERE email = :email"
@@ -42,5 +43,46 @@ class User extends Model {
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function saveVerificationToken($email, $token) {
+        $stmt = $this->pdo->prepare(
+            "UPDATE Users
+            SET verification_token = :token
+            WHERE email = :email"
+        );
+
+        return $stmt->execute([
+            'token' => $token,
+            'email' => $email
+        ]);
+        
+    }
+
+    public function findByToken($token){
+        $stmt = $this->pdo->prepare(
+            "SELECT * FROM Users
+            WHERE verification_token = :token;"
+        );
+
+        $stmt->execute([
+            'token' => $token
+        ]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function verifyAccount($id_user) {
+        $stmt = $this->pdo->prepare(
+            "UPDATE Users
+            SET is_verified = 1,
+                verification_token = NULL
+            WHERE id_user = :id_user"
+        );
+
+        return $stmt->execute([
+            'id_user' => $id_user
+        ]);
+    }
+
 }
 

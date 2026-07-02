@@ -26,7 +26,19 @@
             <span class="pill">Vendredi</span>
             <span class="pill">Weekend</span>
         </div>
+        <?php
+            if (isset($_SESSION['success'])) :
+        ?>
 
+        <div class="success-msg">
+            <?= htmlspecialchars($_SESSION['success']) ?>
+        </div>
+
+        <?php
+            unset($_SESSION['success']);
+        endif;
+        ?>
+        
     <?php if ($error): ?>
         <div class="error-msg"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>

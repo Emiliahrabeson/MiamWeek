@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion — MiamWeek</title>
+    <title>Connexion MiamWeek</title>
     <link rel="stylesheet" href="/css/register.css">
     <style>
         
@@ -22,7 +22,7 @@
     <div class="divider"></div>
 
     <h1 class="login-title">Bienvenue,<br><em>bon appétit.</em></h1>
-    <p class="login-sub">Inscrivez-vous pour voir votre semaine.</p>
+    <p class="login-sub">Inscrivez-vous pour planifier votre repas.</p>
 
     <div class="week-pills">
         <span class="pill">Lundi</span>
@@ -62,7 +62,6 @@
         <div class="field">
             <div class="field-row">
                 <label for="password">Mot de passe</label>
-                <a href="forgot_password.php" class="forgot">Oublié ?</a>
             </div>
             <input type="password" id="password" name="password"
                    placeholder="••••••••" autocomplete="current-password">
@@ -76,7 +75,7 @@
                 placeholder="••••••••">
         </div>
 
-        <button type="submit" class="btn-submit">S'inscrire ;</button>
+        <button type="submit" class="btn-submit">S'inscrire</button>
     </form>
 
     <div class="register-link">
@@ -84,5 +83,15 @@
     </div>
 
 </div>
+
+<script>
+document.querySelector("form").addEventListener("submit", function () {
+    const btn = document.querySelector(".btn-submit");
+
+    btn.disabled = true;
+    btn.innerText = "Envoi...";
+});
+</script>
+
 </body>
 </html>

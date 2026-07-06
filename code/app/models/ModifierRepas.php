@@ -10,7 +10,7 @@ class ModifierRepas extends Model {
              JOIN Jour j ON r.id_jour = j.id_jour
              WHERE r.id_repas = ?"
         );
-
+ 
         $stmt->execute([$id_repas]);
 
         return $stmt->fetch();
@@ -41,7 +41,7 @@ class ModifierRepas extends Model {
         return $stmt->fetchAll();
     }
 
-    public function ajouterRecette($id_repas, $id_recette) {
+    public function ajouterRecette($id_repas, $id_recette) {    // ajouter dans le calendrier
         $stmt = $this->pdo->prepare(
             "INSERT IGNORE INTO Repas_Recette
              (id_repas,id_recette)
@@ -56,11 +56,9 @@ class ModifierRepas extends Model {
         $this->updateCalories($id_repas);
     }
 
-    public function supprimerRecette($id_repas, $id_recette) {
+    public function supprimerRecette($id_repas, $id_recette) {  // retirer dans le calendrier
         $stmt = $this->pdo->prepare(
-            "DELETE FROM Repas_Recette
-             WHERE id_repas = ?
-             AND id_recette = ?"
+            "DELETE FROM Repas_Recette WHERE id_repas = ? AND id_recette = ?"
         );
 
         $stmt->execute([
@@ -71,13 +69,12 @@ class ModifierRepas extends Model {
         $this->updateCalories($id_repas);
     }
 
-    private function updateCalories($id_repas) {
+    private function updateCalories($id_repas) {    // calcul calories après avoir mangé
         $stmt = $this->pdo->prepare(
             "UPDATE Repas
              SET calories = (
                 SELECT COALESCE(
-                    SUM(rec.calories_par_centG),
-                    0
+                    SUM(rec.calories_par_centG),0
                 )
                 FROM Repas_Recette rr
                 JOIN Recette rec

@@ -5,7 +5,7 @@ require_once __DIR__ . '/../models/PlanRepas.php';
 class HomeController {
     public function index() {
         // session_start();
-   
+    
         $lundi = date('Y-m-d', strtotime('monday this week'));
         $dimanche = date('Y-m-d', strtotime('sunday this week'));
         $jours_ordre = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];

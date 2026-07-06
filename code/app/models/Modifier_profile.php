@@ -33,9 +33,7 @@ class ModifierProfile extends Model {
             WHERE nom = :nom
         ");
 
-        $stmt->execute([
-            'nom' => $nomIngredient
-        ]);
+        $stmt->execute(['nom' => $nomIngredient]);
         $ingredient = $stmt->fetch();
 
         if (!$ingredient) {
@@ -65,9 +63,7 @@ class ModifierProfile extends Model {
             WHERE Users.email = :email
         ");
 
-        $stmt->execute([
-            'email' => $email
-        ]);
+        $stmt->execute(['email' => $email]);
 
         return $stmt->fetchAll();
     }

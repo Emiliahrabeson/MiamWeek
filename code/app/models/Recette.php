@@ -8,6 +8,7 @@ class Recette extends Model {
                     nom_recette,
                     categories,
                     calories_par_centG,
+                    preparation,
                     image_url
              FROM Recette
              ORDER BY RAND()
@@ -24,12 +25,19 @@ class Recette extends Model {
 
         return $stmt->fetchAll();
     }
+    public function getById($id_recette) {
+        $stmt = $this->pdo->prepare(
+            "SELECT * FROM Recette WHERE id_recette = :id_recette"
+        );
 
+        $stmt->execute(['id_recette' => $id_recette]);
+
+        return $stmt->fetch();
+    }
+ 
     public function search($search) {
         $stmt = $this->pdo->prepare(
-            "SELECT *
-             FROM Recette
-             WHERE nom_recette LIKE :search"
+            "SELECT * FROM Recette WHERE nom_recette LIKE :search"
         );
 
         $stmt->execute([

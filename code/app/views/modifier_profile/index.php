@@ -20,7 +20,6 @@
             <?php foreach($favoris as $fav): ?>
                 <p>
                     <?= $fav['nom_recette'] ?>
-
                     <a href="index.php?page=deleteFavori&id=<?= $fav['id_recette'] ?>">
                         Enlever
                     </a>

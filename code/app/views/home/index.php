@@ -90,6 +90,7 @@
             $repas  = $slot['recettes'] ?? [];
             $id_rep = $slot['id_repas'] ?? null;
           ?>
+          
             <td class="cell-repas <?= !empty($repas) ? 'cell-filled' : 'cell-empty' ?>">
               <?php if (!empty($repas)): ?>
                 <?php foreach ($repas as $rec): ?>
@@ -104,7 +105,7 @@
                 <span class="vide-icon">+</span>
                 <a href="index.php?page=modifier_repas&id_repas=<?= $id_rep ?>"
                    class="btn-ajouter">Ajouter</a>
-              <?php endif; ?>
+              <?php endif;?>
             </td>
           <?php endforeach; ?>
         </tr>

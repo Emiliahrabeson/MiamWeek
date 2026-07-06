@@ -15,7 +15,7 @@ class NotificationController {
         $date_aujourdhui = date('Y-m-d');
 
         $notification = new Notification();
-
+ 
         $notification->rappelEau($id_user);
         $notification->listeCourse($id_user);
         $notification->suiviPlanning($id_user);

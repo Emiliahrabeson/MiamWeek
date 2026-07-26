@@ -7,7 +7,7 @@ class RecetteController {
             header("Location: index.php?page=login");
             exit();
         }
-
+         
         $id_user = $_SESSION['id_user'];
         $nom_user = $_SESSION["email"];
         $prenom_user = $_SESSION["prenom"];
@@ -17,11 +17,22 @@ class RecetteController {
         $suggestions = $rec->getSuggestions();
 
         if (isset($_GET['favori'])) {
-            $rec->addFavori(
-                $id_user,
-                $_GET['favori']
-            );
+            $rec->addFavori($id_user,$_GET['favori']);
+            
             header("Location: index.php?page=recette");
+            exit();
+        }
+
+        if (isset($_GET['preparation'])) {
+            $id_recette = (int) $_GET['preparation'];
+            $recette = $rec->getById($id_recette);
+
+            if (!$recette) {
+                header("Location: index.php?page=recette");
+                exit();
+            }
+
+            require __DIR__ . '/../views/recette/preparation.php';
             exit();
         }
 

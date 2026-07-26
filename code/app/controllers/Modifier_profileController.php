@@ -20,11 +20,11 @@ class Modifier_profileController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $action = $_POST['action'] ?? '';
 
-            if ($action === 'update_profile') {
-                if (!empty($_POST['calories'])) {
+            if ($action === 'update_profile') {             
+                if (!empty($_POST['calories'])) {           // ajouter obj calorique
                     $model->updateCalories($user['id_user'], $_POST['calories']);
                 }
-                if (!empty($_POST['allergie'])) {
+                if (!empty($_POST['allergie'])) {           // ajout allergie
                     $model->addAllergie($user['id_user'], $_POST['allergie']);
                 }
                 header("Location: index.php?page=modifier_profile");

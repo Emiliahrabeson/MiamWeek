@@ -17,7 +17,7 @@
       <li><a href="index.php?page=recette">Recettes</a></li>
       <li><a href="index.php?page=ingredient">Ingredient</a></li>
       <li><a href="index.php?page=dashboard">Dashboard</a></li>
-    </ul>
+    </ul> 
   </div>
   <div class="avatar">
       <ul>
@@ -41,16 +41,17 @@
       <?php $data = empty($res) ? $suggestions : $res;
       foreach ($data as $s): ?>
       <div class="sug-card">
-        <img src="<?= htmlspecialchars($s['image_url']) ?>"
-             alt="<?= htmlspecialchars($s['nom_recette']) ?>"
-        >
+      <a href="index.php?page=recette&preparation=<?= $s['id_recette'] ?>">
+        <img src="<?= htmlspecialchars($s['image_url']) ?>" alt="<?= htmlspecialchars($s['nom_recette']) ?>">
+      </a>  
+      
         <div class="sug-card-body">
           <h4><?= htmlspecialchars($s['nom_recette']) ?></h4>
-          <p><?= htmlspecialchars($s['categories']) ?> : <span class="kcal"><?= (int)$s['calories_total'] ?> kcal</span></p>
+          <p><?= htmlspecialchars($s['categories']) ?> : <span class="kcal"><?= (int)$s['calories_par_centG'] ?> kcal</span></p>
             <a class="sug-card-body" href="index.php?page=recette&favori=<?= $s['id_recette'] ?>">
               Ajouter aux favoris
           </a>
-        </div>
+        </div> 
       </div>
       <?php endforeach; ?>
     </div>

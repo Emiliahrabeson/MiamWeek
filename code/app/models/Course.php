@@ -16,7 +16,7 @@ class Course extends Model {
         return $stmt->fetchColumn();
     }
     
-    public function getIngredientsPlan($id_plan) {
+    public function getIngredientsPlan($id_plan) {      // prendre toutes les ingredients des recettes dans le plan
         $stmt = $this->pdo->prepare("
             SELECT
                 i.id_ingredient,

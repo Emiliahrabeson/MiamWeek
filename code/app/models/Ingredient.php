@@ -11,14 +11,14 @@ class Ingredient extends Model {
         $stmt->execute(['search' => "%".$search."%"]);
         $ingredients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if (!empty($ingredients)) {
+        if (!empty($ingredients)) {     // si l'ingredient est dans la bdd
             return [
                 'ingredients' => $ingredients,
                 'erreur_api' => ''
             ];
         }
-
-        $url = "https://world.openfoodfacts.org/cgi/search.pl?search_terms=" . urlencode($search). "&json=1&page_size=50";
+            // sinon faire une recherche
+        $url = "https://world.openfoodfacts.org/cgi/search.pl?search_terms=" . urlencode($search). "&json=1&page_size=50"; 
         $context = stream_context_create([
             'http' => [
                 'timeout' => 10,
@@ -39,21 +39,19 @@ class Ingredient extends Model {
         if (!empty($data['products'])) {
             foreach ($data['products'] as $p) {
                 $nom = trim($p['product_name_fr'] ?? $p['product_name'] ?? '');
-                $nom = ucfirst(strtolower($nom));
+                $nom = ucfirst(strtolower($nom));   // maj le lettre 1 puis miniscule les autres
 
                 if (empty($nom)) {
                     continue;
                 }
 
-                $check = $this->pdo->prepare(
+                $check = $this->pdo->prepare(       // vérifier si le resultat du recherche est déjà dans la bdd
                     "SELECT id_ingredient FROM Ingredient WHERE nom = :nom"
                 );
 
-                $check->execute([
-                    'nom' => $nom
-                ]);
+                $check->execute(['nom' => $nom]);
 
-                if ($check->fetch()) {
+                if ($check->fetch()) {      
                     continue;
                 }
 

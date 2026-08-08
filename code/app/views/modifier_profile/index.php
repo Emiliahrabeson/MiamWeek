@@ -42,12 +42,17 @@
         </div>
 
         <h3 class="modif-titre">Modification</h3>
-        <form method="POST">
-            <input type="hidden" name="action" value="update_profile">
-            <input type="text" placeholder="Ajouter un objectif calorique" name="calories">
-            <input type="text" placeholder="Ajouter une allergie" name="allergie">
-            <input type="submit" value="Ajouter">
-        </form>
+            <?php if (!empty($errorProfil)): ?>
+                <p class="msg-error"><?= htmlspecialchars($errorProfil) ?></p>
+            <?php elseif (!empty($successProfil)): ?>
+                <p class="msg-success"><?= htmlspecialchars($successProfil) ?></p>
+            <?php endif; ?>
+            <form method="POST">
+                <input type="hidden" name="action" value="update_profile">
+                <input type="text" placeholder="Ajouter un objectif calorique" name="calories">
+                <input type="text" placeholder="Ajouter une allergie" name="allergie">
+                <input type="submit" value="Ajouter">
+            </form>
 
 
        <h3 class="modif-titre">Sécurity</h3>

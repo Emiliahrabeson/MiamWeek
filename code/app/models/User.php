@@ -12,7 +12,7 @@ class User extends Model {
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
+ 
     public function create($nom,$prenom, $email, $password) {
         $sql = "
             INSERT INTO Users

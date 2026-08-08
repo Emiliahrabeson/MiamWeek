@@ -47,12 +47,12 @@ class Router {
                 break;
             
             case 'deleteAllergie':
-                $controller = new ProfileController();
+                $controller = new Modifier_profileController();
                 $controller->deleteAllergie();
                 break;
 
             case 'deleteFavori':
-                $controller = new ProfileController();
+                $controller = new Modifier_profileController();
                 $controller->deleteFavori();
                 break;
 

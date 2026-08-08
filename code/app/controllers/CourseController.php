@@ -17,10 +17,20 @@ class CourseController {
         if (!$id_plan) {
             die("Aucun plan sélectionné");
         }
-        $id_liste = $course->createListe($id_plan,$id_user);
-        $liste = $course->getListe( $id_liste);
+
+        $id_liste = $course->getListeByPlan($id_plan);
+        if (!$id_liste) {
+            $id_liste = $course->createListe($id_plan, $id_user);
+        }
+
+        if (isset($_GET['toggle']) && isset($_GET['liste'])) {
+            $course->toggleAchete((int) $_GET['liste'], (int) $_GET['toggle']);
+            header("Location: index.php?page=course");
+            exit();
+        }
+
+        $liste = $course->getListe($id_liste);
 
         require __DIR__ . '/../views/courses/index.php';
-
     }
 }

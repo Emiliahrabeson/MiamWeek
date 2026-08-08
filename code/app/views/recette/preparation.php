@@ -58,6 +58,20 @@
     </div>
 
     <div class="prep-steps-panel">
+        <div class="prep-ingredients-panel">
+            <h3 class="steps-titre">Ingrédients</h3>
+            <div class="ingredients-list">
+                <?php foreach ($ingredients as $ing): ?>
+                    <div class="ingredient-item">
+                        <span class="ingredient-nom"><?= htmlspecialchars($ing['nom']) ?></span>
+                        <span class="ingredient-qte">
+                            <?= (float)$ing['quantite'] ?> <?= htmlspecialchars($ing['unite_par_def']) ?>
+                        </span>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        
         <h3 class="steps-titre">Préparation</h3>
         <div class="steps-list">
             <?php foreach (explode("\n", $recette['preparation']) as $etape): ?>

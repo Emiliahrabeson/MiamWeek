@@ -12,9 +12,10 @@ class RecetteController {
         $nom_user = $_SESSION["email"];
         $prenom_user = $_SESSION["prenom"];
 
-        $rec = new Recette ();
+        $rec = new Recette();
 
-        $suggestions = $rec->getSuggestions();
+        $suggestions = $rec->getSuggestions($id_user);
+
 
         if (isset($_GET['favori'])) {
             $rec->addFavori($id_user,$_GET['favori']);
@@ -22,6 +23,7 @@ class RecetteController {
             header("Location: index.php?page=recette");
             exit();
         }
+ 
 
         if (isset($_GET['preparation'])) {
             $id_recette = (int) $_GET['preparation'];
@@ -31,6 +33,8 @@ class RecetteController {
                 header("Location: index.php?page=recette");
                 exit();
             }
+
+            $ingredients = $rec->getIngredients($id_recette);
 
             require __DIR__ . '/../views/recette/preparation.php';
             exit();

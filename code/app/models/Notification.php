@@ -36,6 +36,7 @@ class Notification extends Model {
         
     }
 
+
     public function listeCourse ($id_user) {
         $maintenant = new DateTime();
         $maintenant->modify('+5 minutes');

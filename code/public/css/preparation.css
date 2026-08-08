@@ -210,7 +210,41 @@ a {
   transform: translateY(-2px);
   background-color: #eac860;
 }
+.prep-ingredients-panel {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 28px 32px;
+  backdrop-filter: blur(12px);
+  margin-bottom: 28px;
+}
 
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ingredient-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ingredient-item:last-child {
+  border-bottom: none;
+}
+
+.ingredient-nom {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ingredient-qte {
+  color: #dbaf2c;
+  font-weight: 700;
+}
 .prep-steps-panel {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);

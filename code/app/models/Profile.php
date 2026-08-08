@@ -45,43 +45,5 @@ class Profile extends Model {
         return $stmtFav->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // public function deleteAllergie($id_user, $id_ingredient) {
-    //     $stmt = $this->pdo->prepare("
-    //         DELETE FROM Allergie
-    //         WHERE id_user = :id_user
-    //         AND id_ingredient = :id_ingredient
-    //     ");
-
-    //     return $stmt->execute([
-    //         'id_user' => $id_user,
-    //         'id_ingredient' => $id_ingredient
-    //     ]);
-    // }
- 
-    // public function deleteFavori ($email, $id_recette) {    
-    //     $stmtUser = $this->pdo->prepare("
-    //         SELECT id_user
-    //         FROM Users
-    //         WHERE email = :email
-    //     ");
-    //     $stmtUser->execute(['email' => $email]);
-
-    //     $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
-
-    //     $id_user = $user['id_user'];
-
-    //     $delete = $this->pdo->prepare("
-    //         DELETE FROM Favoris
-    //         WHERE id_user = :id_user
-    //         AND id_recette = :id_recette
-    //     ");
-
-    //     return $delete->execute([
-    //                 'id_user' => $id_user,
-    //                 'id_recette' => $id_recette
-    //             ]);
-
-
-    // }
 
 }

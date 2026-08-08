@@ -8,7 +8,10 @@ CREATE TABLE Users (
     email VARCHAR(150) UNIQUE,
     password VARCHAR(255),
     objectif_calorie_daily INT,
-    date_inscription DATE
+    date_inscription DATE,
+    verification_token VARCHAR(255),
+    is_verified TINYINT(1) NOT NULL DEFAULT 0,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE Plan_de_repas (
@@ -46,10 +49,11 @@ CREATE TABLE Recette (
     id_recette INT AUTO_INCREMENT PRIMARY KEY,
     nom_recette VARCHAR(150),
     description TEXT,
+    preparation TEXT,
     temps_preparation INT,
     temps_cuisson INT,
     categories VARCHAR(100),
-    calories_total INT,
+    calories_par_centG INT,
     image_url TEXT,
     date_creation DATE,
     id_user INT,
@@ -120,9 +124,9 @@ CREATE TABLE Liste_ingredient (
 );
 
 CREATE TABLE Allergie (
-    id_allergie INT AUTO_INCREMENT PRIMARY KEY,
     id_user INT,
     id_ingredient INT,
+    PRIMARY KEY (id_user, id_ingredient),
     FOREIGN KEY (id_user)
         REFERENCES Users(id_user)
         ON DELETE CASCADE,
@@ -133,10 +137,13 @@ CREATE TABLE Allergie (
 
 CREATE TABLE Notification (
     id_notification INT AUTO_INCREMENT PRIMARY KEY,
-    date DATE,
-    heure TIME,
-    message VARCHAR(255),
+    message TEXT,
     id_user INT,
+    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
+    lu TINYINT(1) DEFAULT 0,
+    type_notification VARCHAR(50) NOT NULL,
+    date_envoi DATETIME,
+    envoyee TINYINT(1) DEFAULT 0,
     FOREIGN KEY (id_user)
         REFERENCES Users(id_user)
         ON DELETE CASCADE
@@ -145,6 +152,7 @@ CREATE TABLE Notification (
 CREATE TABLE Favoris (
     id_user INT,
     id_recette INT,
+    date_ajout DATE,
     PRIMARY KEY (id_user, id_recette),
     FOREIGN KEY (id_user)
         REFERENCES Users(id_user)
@@ -153,3 +161,9 @@ CREATE TABLE Favoris (
         REFERENCES Recette(id_recette)
         ON DELETE CASCADE
 );
+
+-- NOTE: la table `sessions` existe dans la base (visible dans SHOW TABLES)
+-- mais son DESCRIBE n'a pas été fourni. Elle est probablement générée
+-- automatiquement par une librairie de gestion de sessions
+-- (ex: express-mysql-session / connect-session-mysql).
+-- Ajoute-la ici si tu veux la conserver dans ce script.

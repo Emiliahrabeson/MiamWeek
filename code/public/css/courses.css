@@ -1,0 +1,139 @@
+@font-face {
+  font-family: "Dancing Script";
+  src: url("/images/fonts/DancingScript-Regular.ttf");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("/images/notif_back.jpg") center/cover fixed;
+  font-family: "DM Sans", sans-serif;
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 60px;
+}
+
+.titre {
+  font-family: "Dancing Script", cursive;
+  font-size: 45px;
+  color: #fff;
+}
+
+.link ul {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+}
+
+.link a,
+.avatar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.up {
+  background-color: #dbaf2c;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #1e1e1e !important;
+  font-weight: bold;
+}
+
+.wrap {
+  max-width: 700px;
+  margin: 20px auto 60px;
+  padding: 0 20px;
+}
+
+.page-titre {
+  font-family: "Dancing Script", cursive;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.course-panel {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 20px 28px;
+  backdrop-filter: blur(12px);
+}
+
+.course-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.course-item:last-child {
+  border-bottom: none;
+}
+
+.check-toggle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 4px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 2px solid #dbaf2c;
+  border-radius: 6px;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.course-item.done .checkbox {
+  background-color: #dbaf2c;
+}
+
+.course-item.done .checkbox::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 11px;
+  border: solid #1e1e1e;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.item-nom {
+  flex: 1;
+  font-size: 15px;
+}
+
+.item-qte {
+  font-size: 13px;
+  color: #dbaf2c;
+  font-weight: 700;
+}
+
+.course-item.done .item-nom {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.4);
+}

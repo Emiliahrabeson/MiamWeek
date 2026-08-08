@@ -1,95 +1,215 @@
 # MiamWeek
 
-Application web de planification de repas hebdomadaires.
+**MiamWeek** est une application web de planification de repas hebdomadaire permettant aux utilisateurs d'organiser leurs repas, consulter des recettes, suivre leur consommation calorique et générer automatiquement leur liste de courses.
 
----
-
-## Description
-
-**MiamWeek** est une application qui aide les utilisateurs à organiser leurs repas sur une semaine, suivre leurs apports caloriques, gérer leurs allergies et préparer leur liste de courses.
-
-Le cycle de fonctionnement est le suivant :
-
-1. L'utilisateur s'inscrit et définit ses allergies et son objectif calorique quotidien
-2. Il crée ou consulte des recettes
-3. Il génère un plan de repas sur 7 jours
-4. Chaque jour contient plusieurs repas (petit-déjeuner, déjeuner, dîner)
-5. Les calories sont calculées automatiquement
-6. Une liste de courses est générée depuis le plan
-7. Les anciens plans restent disponibles dans l'historique
+L'objectif est de simplifier l'organisation alimentaire quotidienne en centralisant les **recettes**, les **plans de repas**, les **allergies**, les **calories**, les **statistiques** et les **listes de courses** dans une seule application.
 
 ---
 
 ## Fonctionnalités
 
-- Inscription et connexion
-- Planification des repas sur 7 jours
-- Création et consultation de recettes
-- Recherche de recettes par ingrédients
-- Calcul automatique des calories par repas, par jour
-- Statistiques de consommation calorique
-- Gestion des recettes favorites
-- Génération automatique de la liste de courses depuis le plan de repas
-- Gestion des allergies avec filtrage des recettes
-- Suggestions de repas personnalisées
-- Notifications de rappel envoyées
-- Historique des plans de repas de la semaine dernière
+### Gestion du compte
+
+* Inscription et connexion
+* Gestion du profil utilisateur
+* Modification du mot de passe
+* Confirmation du compte par e-mail
+
+### Planification des repas
+
+* Planification des repas sur une semaine
+* Organisation des repas par jour
+* Gestion du petit-déjeuner, déjeuner et dîner
+* Suggestion automatique d'un plan de repas
+* Consultation de l'historique des plans de repas
+
+### Gestion des recettes
+
+* Consultation des recettes
+* Recherche par recette ou ingrédient
+* Recherche par type de repas
+* Affichage des ingrédients et de leurs quantités
+* Affichage du temps de préparation et de cuisson
+* Calcul des calories d'une recette
+* Création de recettes personnelles
+* Gestion des recettes favorites
+
+### Gestion des allergies
+
+* Définition des allergies de l'utilisateur
+* Association des allergies aux ingrédients
+* Filtrage automatique des recettes contenant des ingrédients auxquels l'utilisateur est allergique
+
+### Liste de courses
+
+* Génération automatique d'une liste de courses à partir du plan de repas
+* Regroupement des ingrédients nécessaires
+* Calcul des quantités nécessaires pour la semaine
+
+### Suivi des calories
+
+* Calcul des calories par repas
+* Calcul des calories par jour
+* Calcul des calories sur l'ensemble de la semaine
+* Visualisation des statistiques de consommation calorique
+
+### Notifications
+
+* Notifications quotidiennes
+* Rappel du plan de repas prévu pour la journée
 
 ---
 
-## Stack technique
+## Architecture
 
-| Catégorie | Technologies |
-|---|---|
-| Frontend | HTML, CSS |
-| Backend | PHP |
-| Base de données | MySQL |
-| Environnement | Linux |
+MiamWeek est développé selon le modèle **MVC (Modèle - Vue - Contrôleur)**.
+
+```text
+┌───────────────────────┐
+│         Vue           │
+│      HTML / CSS       │
+└───────────┬───────────┘
+            │
+            ▼
+┌───────────────────────┐
+│     Contrôleur        │
+│         PHP           │
+└───────────┬───────────┘
+            │
+            ▼
+┌───────────────────────┐
+│        Modèle         │
+│   Logique métier /    │
+│    accès aux données  │
+└───────────┬───────────┘
+            │
+            ▼
+┌───────────────────────┐
+│        MySQL          │
+│      Base de données  │
+└───────────────────────┘
+```
+
+Cette architecture permet de séparer :
+
+* la présentation ;
+* la logique applicative ;
+* l'accès aux données.
+
+Elle facilite ainsi la maintenance et l'évolution de l'application.
 
 ---
 
-## Structure de la base de données
+## Modèle de données
 
-Les entités principales sont les suivantes :
+La base de données repose notamment sur les entités suivantes :
 
-- `Utilisateur` — nom, email, mot de passe hashé, objectif calorique quotidien
-- `PlanDeRepas` — période de 7 jours, statut (en cours / terminé / archivé)
-- `Jour` — date, appartient à un plan de repas
-- `Repas` — type (petit-déjeuner, déjeuner, dîner), appartient à un jour
-- `Recette` — description, temps de préparation, temps de cuisson, calories totales
-- `Ingredient` — unité par défaut, calories par unité
-- `Allergie` — liée à des ingrédients via une table de jointure
-- `ListeCourse` — générée depuis un plan de repas, contient des ingrédients avec quantités
-- `Favori` — association entre un utilisateur et une recette
-- `Notification` — rappels par utilisateur
+* `Utilisateur`
+* `Recette`
+* `Ingrédient`
+* `Repas`
+* `Jour`
+* `Plan_de_repas`
+* `Allergie`
+* `Notification`
+* `Liste_de_courses`
 
-La chaîne logique du modèle est :
+Des tables d'association permettent également de gérer les relations plusieurs-à-plusieurs, notamment entre les recettes et les ingrédients ainsi qu'entre les allergies et les ingrédients.
 
-```
-Utilisateur → PlanDeRepas → Jour → Repas → Recette → Ingredient
-```
+---
+
+## Technologies utilisées
+
+| Technologie  | Utilisation                    |
+| ------------ | ------------------------------ |
+| PHP          | Logique métier et contrôleurs  |
+| MySQL        | Base de données                |
+| HTML5        | Structure des pages            |
+| CSS3         | Mise en forme et interface     |
+| Git / GitHub | Gestion de versions            |
+| Linux        | Environnement de développement |
+
+---
+
+## Tableau de bord
+
+L'application dispose d'un tableau de bord permettant notamment de visualiser la consommation calorique au cours de la semaine.
+
+Les statistiques permettent d'avoir une vue synthétique des habitudes alimentaires de l'utilisateur.
 
 ---
 
 ## Installation
 
+### 1. Cloner le projet
+
 ```bash
-# Cloner le projet
-git clone https://github.com/Emiliahrabeson/miamweek.git
-cd miamweek
-
-# Importer la base de données
-mysql -u root -p < database.sql
-
-# Configurer la connexion
-cp config/config.example.php config/config.php
-# Renseigner les identifiants MySQL dans config.php
+git clone https://github.com/Emiliahrabeson/MiamWeek.git
+cd MiamWeek
 ```
 
-Lancer ensuite le projet via Apache, Nginx ou `php -S localhost:8000 -t public`.
+### 2. Configurer la base de données
+
+Créer une base de données MySQL puis importer le fichier SQL fourni dans le projet.
+
+### 3. Configurer la connexion à la base de données
+
+Modifier les paramètres de connexion MySQL dans le fichier de configuration du projet :
+
+```text
+Host     : localhost
+Database : miamweek
+Username : votre_utilisateur
+Password : votre_mot_de_passe
+```
+
+### 4. Lancer l'application
+
+Placer le projet dans le répertoire de votre serveur web PHP, puis accéder à l'application depuis votre navigateur.
+
+---
+
+## Objectifs du projet
+
+Le projet a été réalisé dans le cadre de la **Licence 3 Informatique et Technologie** à l'Université d'Antananarivo.
+
+Il avait notamment pour objectifs de mettre en pratique :
+
+* l'analyse des besoins ;
+* la définition de règles de gestion ;
+* la modélisation d'une base de données ;
+* la conception d'un MCD et d'un MLD ;
+* l'architecture MVC ;
+* le développement d'une application web complète ;
+* la gestion d'une base de données MySQL ;
+* l'utilisation de Git et GitHub.
+
+---
+
+## Perspectives d'amélioration
+
+Plusieurs améliorations peuvent être envisagées :
+
+* améliorer le système de recommandation des plans de repas ;
+* mettre en place l'envoi réel des notifications par e-mail ou notification navigateur ;
+* enrichir la recherche de recettes avec davantage de critères nutritionnels ;
+* améliorer l'ergonomie de la planification ;
+* développer une version mobile de l'application.
 
 ---
 
 ## Auteur
 
-Rabeson Fanomezantsoa Fenitra Emiliah
+**Rabeson Fanomezantsoa Fenitra Emiliah**
+
+Licence 3 – Informatique et Technologie
+Université d'Antananarivo
+
+---
+
+## Projet académique
+
+MiamWeek est un projet réalisé dans le cadre d'un projet universitaire de Licence 3.
+
+**Dépôt GitHub :**
+https://github.com/Emiliahrabeson/MiamWeek

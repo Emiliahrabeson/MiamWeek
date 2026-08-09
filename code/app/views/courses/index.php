@@ -27,7 +27,7 @@
 </div>
 
 <div class="wrap">
-    <h2 class="page-titre">Liste de courses</h2>
+    <h2 class="page-title">Liste de courses</h2>
 
     <div class="course-panel">
         <ul class="course-list">

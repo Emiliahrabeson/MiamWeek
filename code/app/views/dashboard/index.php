@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<div class="dashboard-wrapper">
+<div class="page-wrapper">
 
     <h2 class="page-title">Dashboard</h2>
 

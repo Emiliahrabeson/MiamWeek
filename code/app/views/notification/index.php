@@ -26,7 +26,7 @@
 </div>
 
 <div class="wrap">
-    <h2 class="page-titre">Notifications</h2>
+    <h2 class="page-title">Notifications</h2>
 
     <?php if (empty($notifications)): ?>
         <div class="aucune">Aucune notification pour le moment.</div>

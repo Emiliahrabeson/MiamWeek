@@ -12,7 +12,7 @@
         <h1 class="titre">MiamWeek</h1>
     </div>
     
-    <div class="modif">
+    <div class="page-wrapper">
         <h2 class="page-title">Paramètres</h2>
         <div class="fav">
             <!-- <p class="ti">Favoris :</p> -->

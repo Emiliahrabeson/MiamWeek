@@ -28,12 +28,13 @@
 <div class="wrap">
     <a href="index.php?page=recette" class="retour"> Retour aux recettes</a>
 
+    <h2 class="page-title"><?= htmlspecialchars($recette['nom_recette']) ?></h2>
+
     <div class="prep-hero">
         <img src="<?= htmlspecialchars($recette['image_url']) ?>" alt="<?= htmlspecialchars($recette['nom_recette']) ?>" class="prep-image">
 
         <div class="prep-hero-info">
             <span class="badge-categorie"><?= htmlspecialchars($recette['categories']) ?></span>
-            <h2 class="page-title"><?= htmlspecialchars($recette['nom_recette']) ?></h2>
             <p class="prep-description"><?= htmlspecialchars($recette['description']) ?></p>
 
             <div class="prep-stats">

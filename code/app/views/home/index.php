@@ -31,7 +31,7 @@
 
 </div>
 
-<div class="titre">
+<div class="page-wrapper">
     <h2 class="page-title">Bienvenue sur MiamWeek</h2>
 
 <div class="statistique">

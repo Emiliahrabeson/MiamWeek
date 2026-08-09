@@ -26,8 +26,9 @@
 </div>
 
 <div class="wrap">
-  <div class="panel">
+  <h2 class="page-title">Ingrédients</h2>
 
+  <div class="panel">
     <div class="search-bar">
       <form method="POST" action="">
         <input type="text" class="search-input" name="search"
@@ -36,8 +37,6 @@
         <input type="submit" value="Rechercher" class="submit">
       </form>
     </div>
-
-    <div class="panel-titre">Ingrédients</div>
 
     <?php if (!empty($erreur_api)): ?>
       <p class="aucun"><?= $erreur_api ?></p>

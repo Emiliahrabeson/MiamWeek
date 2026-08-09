@@ -75,6 +75,16 @@ body {
   color: #fff;
 }
 
+.page-wrapper {
+  max-width: 900px;
+  margin: 120px auto 60px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  color: #fff;
+}
+
 .avatar-img {
   width: 120px;
   height: 120px;
@@ -98,6 +108,8 @@ body {
   margin-bottom: 25px;
   color: #fff;
   font-family: "Dancing Script", cursive;
+  width: 100%;
+  padding: 15px 0;
 }
 
 .info {

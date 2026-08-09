@@ -104,6 +104,13 @@ a {
   width: 100%;
 }
 
+.page-wrapper {
+  max-width: 900px;
+  margin: 20px auto 60px;
+  padding: 0 20px;
+  width: 100%;
+}
+
 .retour {
   display: inline-block;
   font-size: 14px;
@@ -121,6 +128,9 @@ a {
   font-size: 40px;
   color: #fff;
   margin: 10px 0 12px;
+  text-align: center;
+  width: 100%;
+  padding: 15px 0;
 }
 
 .prep-hero {

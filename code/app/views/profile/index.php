@@ -13,8 +13,7 @@
     </div>
      
 
-    <div class="profile">
-        <div class="me">
+    <div class="page-wrapper">
 
             <img class="avatar-img" src="/images/avatar.png" alt="avatar">
             <h2 class="page-title"><?= $username ?></h2>

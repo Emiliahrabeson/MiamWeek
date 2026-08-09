@@ -103,13 +103,20 @@ a {
   font-size: 36px;
   color: #fff;
   margin-bottom: 24px;
+  text-align: center;
+  width: 100%;
+  padding: 15px 0;
 }
 .wrap {
   max-width: 1100px;
   margin: 0 auto;
   padding: 28px 20px;
 }
-
+.page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
 .search-bar {
   display: flex;
   gap: 8px;

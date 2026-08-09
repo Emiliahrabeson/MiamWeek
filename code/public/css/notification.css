@@ -106,11 +106,21 @@ a {
   width: 100%;
 }
 
+.page-wrapper {
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
 .page-title {
   font-family: "Dancing Script", cursive;
   font-size: 36px;
   color: #fff;
   margin-bottom: 24px;
+  text-align: center;
+  width: 100%;
+  padding: 15px 0;
 }
 
 /* ── Notification card ── */

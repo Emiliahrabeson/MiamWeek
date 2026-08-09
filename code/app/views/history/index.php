@@ -28,6 +28,7 @@
 
 </div>
 
+<div class="page-wrapper">
     <h2 class="page-title">Historique</h2>
 
 <div class="plan">

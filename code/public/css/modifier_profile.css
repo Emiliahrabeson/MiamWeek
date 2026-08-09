@@ -45,6 +45,17 @@ body {
   margin-top: 80px;
 }
 
+.page-wrapper {
+  width: 500px;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid #ddd5cb;
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  margin: 80px auto;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -80,6 +91,9 @@ body {
   font-size: 36px;
   color: #fff;
   margin: 0 0 20px 0;
+  text-align: center;
+  width: 100%;
+  padding: 15px 0;
 }
 
 form {

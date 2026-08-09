@@ -97,7 +97,16 @@ a {
   gap: 2.5rem;
 }
 
-/* Page title */
+/* Page wrapper */
+.page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
 .dashboard-wrapper > h1 {
   font-family: "Dancing Script", cursive;
   font-size: 2.6rem;
@@ -114,6 +123,10 @@ a {
   border-left: 4px solid var(--gold);
   padding-left: 1rem;
   line-height: 1;
+  text-align: center;
+  width: 100%;
+  padding: 15px 1rem;
+  margin-bottom: 2rem;
 }
 
 /* Objectif card */

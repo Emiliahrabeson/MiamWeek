@@ -115,7 +115,7 @@ a {
 .page-wrapper {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 20px auto 60px;
   padding: 0 20px 60px;
   box-sizing: border-box;
 }

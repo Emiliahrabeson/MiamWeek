@@ -30,13 +30,13 @@ body {
   color: #1e1610;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
+  top: auto;
+  left: auto;
   width: 100%;
   display: flex;
   align-items: center;
@@ -77,14 +77,25 @@ body {
 
 .page-wrapper {
   width: 100%;
+  max-width: 1200px;
+  margin: 20px auto 60px;
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
+  border-radius: 0;
+  padding: 0 20px;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.profile-inner {
   max-width: 900px;
-  margin: 120px auto 60px;
+  margin: 0 auto;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 40px;
   color: #fff;
-  box-sizing: border-box;
 }
 
 .avatar-img {

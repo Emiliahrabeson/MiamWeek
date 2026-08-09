@@ -30,6 +30,7 @@ body {
   color: #fff;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 /* ── Navbar ── */
@@ -109,7 +110,7 @@ a {
 .page-wrapper {
   width: 100%;
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 20px auto 60px;
   padding: 0 20px;
   box-sizing: border-box;
 }

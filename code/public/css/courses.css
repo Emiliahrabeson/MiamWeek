@@ -18,6 +18,7 @@ body {
     url("/images/notif_back.jpg") center/cover fixed;
   font-family: "DM Sans", sans-serif;
   color: #fff;
+  overflow-y: scroll;
 }
 
 .navbar {

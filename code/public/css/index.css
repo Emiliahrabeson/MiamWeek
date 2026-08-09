@@ -20,6 +20,7 @@ body {
   background-size: cover;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 .navbar {
@@ -40,7 +41,7 @@ body {
 .page-wrapper {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 20px auto 60px;
   padding: 20px;
   flex: 1;
   box-sizing: border-box;

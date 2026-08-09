@@ -5,6 +5,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
 return [
+    'driver' => $_ENV['DB_DRIVER'],
     'host' => $_ENV['DB_HOST'],
     'dbname' => $_ENV['DB_NAME'],
     'user' => $_ENV['DB_USER'],

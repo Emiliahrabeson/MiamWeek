@@ -7,7 +7,7 @@ class Database {
             $config = require __DIR__ . '/../../config/database.php';
             
             self::$pdo = new PDO(
-                    "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8mb4",
+                    "{$config['driver']}:host={$config['host']};dbname={$config['dbname']};charset=utf8mb4",
                     $config['user'],
                     $config['password'],
                     [

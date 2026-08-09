@@ -74,7 +74,7 @@ class User extends Model {
     public function verifyAccount($id_user) {
         $stmt = $this->pdo->prepare(
             "UPDATE Users
-            SET is_verified = 1,
+            SET is_verified = true,
                 verification_token = NULL
             WHERE id_user = :id_user"
         );

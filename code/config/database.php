@@ -6,6 +6,7 @@ $dotenv->load();
 
 return [
     'driver' => $_ENV['DB_DRIVER'],
+    'port' => $_ENV['DB_PORT'],
     'host' => $_ENV['DB_HOST'],
     'dbname' => $_ENV['DB_NAME'],
     'user' => $_ENV['DB_USER'],

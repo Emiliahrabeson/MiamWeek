@@ -13,6 +13,13 @@
   margin: 0 0 6px;
   color: #fff;
 }
+
+.page-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 36px;
+  margin: 0 0 6px;
+  color: #fff;
+}
 .modifier-wrapper p.sub {
   opacity: 0.65;
   font-family: sans-serif;

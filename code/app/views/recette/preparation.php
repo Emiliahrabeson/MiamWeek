@@ -33,7 +33,7 @@
 
         <div class="prep-hero-info">
             <span class="badge-categorie"><?= htmlspecialchars($recette['categories']) ?></span>
-            <h2 class="page-titre"><?= htmlspecialchars($recette['nom_recette']) ?></h2>
+            <h2 class="page-title"><?= htmlspecialchars($recette['nom_recette']) ?></h2>
             <p class="prep-description"><?= htmlspecialchars($recette['description']) ?></p>
 
             <div class="prep-stats">

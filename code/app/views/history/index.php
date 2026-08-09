@@ -28,10 +28,10 @@
 
 </div>
 
-    <h1>Historique</h1>
+    <h2 class="page-title">Historique</h2>
 
 <div class="plan">
-    <h2 class="plan-titre"> Plan de repas de la semaine</h2>
+    <h3 class="plan-subtitle">Plan de repas de la semaine</h3>
 
   <div class="tableau-plan">
     <table class="calendrier">

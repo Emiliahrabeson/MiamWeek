@@ -27,7 +27,7 @@
     </div>
 
     <div class="modifier-wrapper">
-    <h2><?= $repas['type_repas'] ?></h2>
+    <h2 class="page-title"><?= $repas['type_repas'] ?></h2>
     <p class="sub">
         <?= htmlspecialchars($repas['nom_jour']) ?>  <?= date('d/m/Y', strtotime($repas['date_jour'])) ?>
     </p>

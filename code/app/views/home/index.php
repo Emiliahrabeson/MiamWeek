@@ -32,7 +32,7 @@
 </div>
 
 <div class="titre">
-    <h1>Bienvenue sur MiamWeek</h1>
+    <h2 class="page-title">Bienvenue sur MiamWeek</h2>
 
 <div class="statistique">
 

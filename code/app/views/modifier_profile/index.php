@@ -13,7 +13,7 @@
     </div>
     
     <div class="modif">
-        <h2 class="titre">Paramètres</h2>
+        <h2 class="page-title">Paramètres</h2>
         <div class="fav">
             <!-- <p class="ti">Favoris :</p> -->
              <h3 style="color: #fff">Favoris</h3>

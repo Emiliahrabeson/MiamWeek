@@ -28,7 +28,7 @@
 
 <div class="dashboard-wrapper">
 
-    <h1>Dashboard</h1>
+    <h2 class="page-title">Dashboard</h2>
 
     <div class="info">
         <p class="label">Objectif calorique / jour</p>

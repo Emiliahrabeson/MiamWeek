@@ -17,7 +17,7 @@
         <div class="me">
 
             <img class="avatar-img" src="/images/avatar.png" alt="avatar">
-            <h2 class="username"><?= $username ?></h2>
+            <h2 class="page-title"><?= $username ?></h2>
             <div class="info">
                 <p class="label">Nom</p>
                 <p class="value"><?= $user['nom'] ?></p>

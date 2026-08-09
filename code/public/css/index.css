@@ -77,6 +77,15 @@ a {
   color: #1e1e1e;
   cursor: pointer;
 }
+
+.page-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
 .Bienvenue {
   display: flex;
   text-align: center;
@@ -150,6 +159,13 @@ h1 {
   color: #fff;
   margin: 0;
   padding-left: 100px;
+}
+
+.plan-subtitle {
+  font-family: "Dancing Script", cursive;
+  font-size: 36px;
+  color: #fff;
+  margin: 0 0 20px 0;
 }
 
 .tableau-plan {

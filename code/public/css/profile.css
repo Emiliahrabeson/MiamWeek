@@ -92,6 +92,14 @@ body {
   font-family: "Playfair Display", serif;
 }
 
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 25px;
+  color: #fff;
+  font-family: "Dancing Script", cursive;
+}
+
 .info {
   margin-bottom: 18px;
 }

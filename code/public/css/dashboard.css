@@ -107,6 +107,15 @@ a {
   line-height: 1;
 }
 
+.page-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.6rem;
+  color: var(--text);
+  border-left: 4px solid var(--gold);
+  padding-left: 1rem;
+  line-height: 1;
+}
+
 /* Objectif card */
 .info {
   background: var(--bg-card);

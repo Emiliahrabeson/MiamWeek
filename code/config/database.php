@@ -10,3 +10,4 @@ return [
     'user' => $_ENV['DB_USER'],
     'password' => $_ENV['DB_PASSWORD'],
 ];
+ 

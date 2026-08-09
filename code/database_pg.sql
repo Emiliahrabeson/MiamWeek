@@ -178,7 +178,8 @@ BEFORE UPDATE ON users
 FOR EACH ROW
 EXECUTE FUNCTION update_updated_at_column();
 
-CREATE VIEW IF NOT EXISTS vue_ingredients_plan AS
+DROP VIEW IF EXISTS vue_ingredients_plan CASCADE;
+CREATE VIEW vue_ingredients_plan AS
 SELECT
     j.id_plan,
     i.id_ingredient,
@@ -200,7 +201,8 @@ GROUP BY
     i.nom,
     i.unite_par_def;
 
-CREATE VIEW IF NOT EXISTS vue_planning_repas AS
+DROP VIEW IF EXISTS vue_planning_repas CASCADE;
+CREATE VIEW vue_planning_repas AS
 SELECT
     j.id_plan,
     j.id_jour,

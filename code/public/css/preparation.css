@@ -105,10 +105,11 @@ a {
 }
 
 .page-wrapper {
-  max-width: 900px;
+  width: 100%;
+  max-width: 1200px;
   margin: 20px auto 60px;
   padding: 0 20px;
-  width: 100%;
+  box-sizing: border-box;
 }
 
 .retour {

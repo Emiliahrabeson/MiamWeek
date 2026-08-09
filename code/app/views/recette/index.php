@@ -26,7 +26,7 @@
   </div>
 </div>
  
-<div class="wrap">
+<div class="page-wrapper">
   <h2 class="page-title">Recettes</h2>
  
 <div class="panel">

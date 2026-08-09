@@ -99,12 +99,14 @@ a {
 
 /* Page wrapper */
 .page-wrapper {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2.5rem 2rem 4rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  box-sizing: border-box;
 }
 
 .dashboard-wrapper > h1 {

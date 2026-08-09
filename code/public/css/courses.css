@@ -60,9 +60,11 @@ body {
 }
 
 .page-wrapper {
-  max-width: 700px;
+  width: 100%;
+  max-width: 1200px;
   margin: 20px auto 60px;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .page-title {

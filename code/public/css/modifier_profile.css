@@ -47,11 +47,14 @@ body {
 
 .page-wrapper {
   width: 500px;
+  margin: 80px auto;
   background: rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(6px);
   border: 1px solid #ddd5cb;
   border-radius: 18px;
   padding: 35px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   margin: 80px auto;
 }

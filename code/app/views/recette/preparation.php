@@ -25,7 +25,7 @@
     </div>
 </div>
 
-<div class="wrap">
+<div class="page-wrapper">
     <a href="index.php?page=recette" class="retour"> Retour aux recettes</a>
 
     <h2 class="page-title"><?= htmlspecialchars($recette['nom_recette']) ?></h2>

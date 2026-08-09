@@ -31,9 +31,9 @@ class Recette extends Model {
              JOIN Allergie a ON a.id_user = :id_user
              JOIN Ingredient ai ON ai.id_ingredient = a.id_ingredient
              WHERE ri.id_recette = r.id_recette
-               AND ing.nom LIKE CONCAT('%', ai.nom, '%')
+               AND ing.nom LIKE '%' || ai.nom || '%'
          )
-         ORDER BY RAND()
+         ORDER BY RANDOM()
          LIMIT 10"
     );
     $stmt->execute(['id_user' => $id_user]);

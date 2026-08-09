@@ -19,7 +19,7 @@ class Notification extends Model {
             FROM Notification
             WHERE id_user = :id_user
             AND type_notification = 'RAPPEL_EAU'
-            AND DATE(date_creation) = CURDATE();"
+            AND DATE(date_creation) = CURRENT_DATE;"
         );
         $verify->execute(['id_user' => $id_user]);
         $count = $verify->fetchColumn();
@@ -46,7 +46,7 @@ class Notification extends Model {
             FROM Notification
             WHERE id_user = :id_user
             AND type_notification = 'LISTE_COURSE'
-            AND DATE(date_creation) = CURDATE();"
+            AND DATE(date_creation) = CURRENT_DATE;"
         );
         $verify->execute(['id_user' => $id_user]);
         $count = $verify->fetchColumn();
@@ -72,7 +72,7 @@ class Notification extends Model {
             FROM Notification
             WHERE id_user = :id_user
             AND type_notification = 'SUIVI_PLANNING'
-            AND DATE(date_creation) = CURDATE();"
+            AND DATE(date_creation) = CURRENT_DATE;"
         );
         $verify->execute(['id_user' => $id_user]);
         $count = $verify->fetchColumn();

@@ -43,9 +43,10 @@ class ModifierRepas extends Model {
 
     public function ajouterRecette($id_repas, $id_recette) {    // ajouter dans le calendrier
         $stmt = $this->pdo->prepare(
-            "INSERT IGNORE INTO Repas_Recette
+            "INSERT INTO Repas_Recette
              (id_repas,id_recette)
-             VALUES (?,?)"
+             VALUES (?,?)
+             ON CONFLICT DO NOTHING"
         );
 
         $stmt->execute([

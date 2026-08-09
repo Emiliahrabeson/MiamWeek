@@ -33,24 +33,30 @@ class PlanRepas extends Model {
         $plan = $stmt->fetch();
 
         if (!$plan) {       // si n'existe pas encore
-            $this->pdo->prepare(    // creer plan
+            $stmt = $this->pdo->prepare(    // creer plan
                 "INSERT INTO Plan_de_repas
                 (date_debut, date_fin, id_user)
-                VALUES (?, ?, ?)"
-            )->execute([$lundi, $dimanche, $id_user]);
-
-            $id_plan = $this->pdo->lastInsertId();
+                VALUES (?, ?, ?)
+                RETURNING id_plan"
+            );
+            $stmt->execute([$lundi, $dimanche, $id_user]);
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $id_plan = $result['id_plan'];
 
             for ($i = 0; $i < 7; $i++) {        // creer 7 jours de la sem sur le plan
                 $date_jour = date('Y-m-d', strtotime("$lundi +$i days"));
 
-                $this->pdo->prepare(    // ajouter les 7 jours dans la table Jour avec id_plan
+                $stmtJour = $this->pdo->prepare(    // ajouter les 7 jours dans la table Jour avec id_plan
                     "INSERT INTO Jour
                     (nom_jour, date_jour, id_plan)
-                    VALUES (?, ?, ?)"
-                )->execute([$jours_ordre[$i], $date_jour, $id_plan]);
-
-                $id_jour = $this->pdo->lastInsertId();
+                    VALUES (?, ?, ?)
+                    RETURNING id_jour"
+                );
+                $stmtJour->execute([$jours_ordre[$i], $date_jour, $id_plan]);
+                
+                $resultJour = $stmtJour->fetch(PDO::FETCH_ASSOC);
+                $id_jour = $resultJour['id_jour'];
 
                 foreach ($types_repas as $type) {       // ajouter type repas
                     $this->pdo->prepare(

@@ -37,7 +37,8 @@ class Course extends Model {
         $stmt = $this->pdo->prepare("
             INSERT INTO Liste_course
             (nom_liste, date_liste, terminee, id_user, id_plan)
-            VALUES (?, CURDATE(), 0, ?, ?)
+            VALUES (?, CURRENT_DATE, 0, ?, ?)
+            RETURNING id_liste
         ");
 
         $stmt->execute([
@@ -46,7 +47,8 @@ class Course extends Model {
             $id_plan
         ]);
 
-        $id_liste = $this->pdo->lastInsertId();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $id_liste = $result['id_liste'];
         $ingredients = $this->getIngredientsPlan($id_plan);
 
         $insert = $this->pdo->prepare("

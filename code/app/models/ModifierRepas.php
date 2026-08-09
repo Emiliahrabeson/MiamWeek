@@ -16,7 +16,7 @@ class ModifierRepas extends Model {
         return $stmt->fetch();
     }
 
-    public function getRecettesLiees($id_repas) {
+    public function getRecettesLiees($id_repas) {       
         $stmt = $this->pdo->prepare(
             "SELECT rec.*
              FROM Recette rec

@@ -16,26 +16,18 @@ class Course extends Model {
         return $stmt->fetchColumn();
     }
     
-    public function getIngredientsPlan($id_plan) {      // prendre toutes les ingredients des recettes dans le plan (id_plan)
+    public function getIngredientsPlan($id_plan) {      // vue course
         $stmt = $this->pdo->prepare("
             SELECT
-                i.id_ingredient,
-                i.nom,
-                i.unite_par_def,
-                SUM(ri.quantite) AS quantite_totale
-            FROM Jour j
-            JOIN Repas r
-                ON j.id_jour = r.id_jour
-            JOIN Repas_Recette rr
-                ON r.id_repas = rr.id_repas
-            JOIN Recette_ingredient ri
-                ON rr.id_recette = ri.id_recette
-            JOIN Ingredient i
-                ON ri.id_ingredient = i.id_ingredient
-            WHERE j.id_plan = ?
-            GROUP BY i.id_ingredient
-            ORDER BY i.nom
+                id_ingredient,
+                nom,
+                unite_par_def,
+                quantite_totale
+            FROM vue_ingredients_plan
+            WHERE id_plan = ?
+            ORDER BY nom
         ");
+
         $stmt->execute([$id_plan]);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

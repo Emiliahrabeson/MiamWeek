@@ -67,24 +67,19 @@ class PlanRepas extends Model {
         }
 
         $stmt = $this->pdo->prepare(    // affichage des elts de calendrier
-            "SELECT 
-                j.id_jour,
-                j.nom_jour,
-                j.date_jour,
-                r.id_repas,
-                r.type_repas,
-                rec.id_recette,
-                rec.nom_recette,
-                rec.calories_par_centG
-            FROM Jour j
-            JOIN Repas r ON j.id_jour = r.id_jour
-            LEFT JOIN Repas_Recette rr
-                ON r.id_repas = rr.id_repas
-            LEFT JOIN Recette rec
-                ON rr.id_recette = rec.id_recette
-            WHERE j.id_plan = ?
-            ORDER BY j.date_jour, r.type_repas"
-        );
+            "SELECT
+                id_jour,
+                nom_jour,
+                date_jour,
+                id_repas,
+                type_repas,
+                id_recette,
+                nom_recette,
+                calories_par_centG
+            FROM vue_planning_repas         
+            WHERE id_plan = ?
+            ORDER BY date_jour, type_repas"
+        );  // vue_planning_repas
 
         $stmt->execute([$id_plan]);
 
